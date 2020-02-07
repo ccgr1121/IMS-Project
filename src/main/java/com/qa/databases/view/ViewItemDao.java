@@ -8,18 +8,18 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ItemDao {
+public class ViewItemDao {
 
 	private Connection connection;
 
-	public ItemDao() throws SQLException {
+	public ViewItemDao() throws SQLException {
 
 		this.connection = DriverManager.getConnection("jdbc:mysql://34.89.101.76:3306/IMS", "Tsar_Charlie", "Skippy101!");
 	}
 
 
-	public List<Item> readAll() {
-		ArrayList<Item> items = new ArrayList<Item>();
+	public List<ViewItem> readAll() {
+		ArrayList<ViewItem> items = new ArrayList<ViewItem>();
 		try {
 			Statement statement = connection.createStatement();
 			ResultSet resultSet = statement.executeQuery("select * from item");
@@ -28,7 +28,7 @@ public class ItemDao {
 				String name = resultSet.getString("name");
 				Long value = resultSet.getLong("value");
 				int stock = resultSet.getInt("stock");
-				Item item = new Item(item_id, name, value, stock);
+				ViewItem item = new ViewItem(item_id, name, value, stock);
 				items.add(item);
 			}
 		} catch (Exception e) {

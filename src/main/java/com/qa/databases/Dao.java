@@ -1,4 +1,4 @@
-package com.qa.databases.view;
+package com.qa.databases;
 
 import java.util.List;
 

@@ -1,13 +1,13 @@
 package com.qa.databases.view;
 
-public class Item {
+public class ViewItem {
 
 	private Long item_id;
 	private String name;
 	private long value;
 	private int stock;
 
-	public Item(Long item_id, String name, long value, int stock) {
+	public ViewItem(Long item_id, String name, long value, int stock) {
 		this.item_id = item_id;
 		this.name = name;
 		this.value = value;

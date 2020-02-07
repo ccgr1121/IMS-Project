@@ -9,14 +9,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import com.qa.databases.create.CreateCustomer;
+import com.qa.databases.create.CreateItem;
 
-public class CreateCustomerDao {
+public class CreateItemDao {
 
 	private Connection connection;
 	Scanner scanner = new Scanner(System.in);
 
-	public CreateCustomerDao() throws SQLException {
+	public CreateItemDao() throws SQLException {
 
 		this.connection = DriverManager.getConnection("jdbc:mysql://34.89.101.76:3306/IMS", "Tsar_Charlie",
 				"Skippy101!");
@@ -25,23 +25,24 @@ public class CreateCustomerDao {
 	public String userInput(String output) {
 		System.out.println(output);
 		return scanner.nextLine();
+	}	
 
-	}
 
-	public CreateCustomer create() {
-		String stringFirstName = userInput("What is your first name?");
-		String stringLastName = userInput("What is your last name?");
-		CreateCustomer customer = new CreateCustomer(1L, stringFirstName, stringLastName);
+	public CreateItem create() {
+		String stringName = userInput("What is the name of the item?");
+		double doubleValue = userInput("What is your last name?");
+		int intStock = userInput("How many of the items are you adding?");
+		CreateItem item = new CreateItem(1L, stringName, doubleValue, intStock);
 		try {
 			Statement statement = connection.createStatement();
-			statement.executeUpdate("INSERT INTO customer(firstName, lastName) VALUES ( \'" + stringFirstName + "\', \'"
-					+ stringLastName + "\');");
+			statement.executeUpdate("INSERT INTO customer(firstName, lastName) VALUES ( \'" + stringName + "\', \'"
+					+ doubleValue + "\', \'" + intStock + "\' );");
 
-			return customer;
+			return item;
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return customer;
+		return item;
 	}
 }

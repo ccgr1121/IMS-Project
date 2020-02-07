@@ -11,10 +11,10 @@ public class Runner {
 		for(ViewCustomer customer : customers) {
 			System.out.println(customer.getId() + " " + customer.getFirstName());
 		}
-		ItemDao idao = new ItemDao();
+		ViewItemDao idao = new ViewItemDao();
 		idao.toString();
-		List<Item> items = idao.readAll();
-		for (Item item : items) {
+		List<ViewItem> items = idao.readAll();
+		for (ViewItem item : items) {
 			System.out.println(item.getId() + " " + item.getName());
 		}
 		
