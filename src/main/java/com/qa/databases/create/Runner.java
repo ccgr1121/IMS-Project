@@ -15,9 +15,9 @@ public class Runner {
 		CreateCustomer customer = ccdao.create();
 		System.out.println(customer.getFirstName() + " " + customer.getLastName() + " has been added to the database");
 
-		CreateItemDao cidao = new CreateItemDao();
-		CreateItem item = cidao.create();
-		System.out.println(item.getStock() + " number of " + item.getName() + " have been added to the database");
+//		CreateItemDao cidao = new CreateItemDao();
+//		CreateItem item = cidao.create();
+//		System.out.println(item.getStock() + " number of " + item.getName() + " have been added to the database");
 	}
 
 }
