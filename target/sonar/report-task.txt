@@ -1,6 +1,0 @@
-projectKey=com.qa.ims:charles-ims
-serverUrl=http://35.189.123.196/sonarqube
-serverVersion=7.9.2.30863
-dashboardUrl=http://35.189.123.196/sonarqube/dashboard?id=com.qa.ims%3Acharles-ims
-ceTaskId=AXAu3qlg5b7qNMQhNm02
-ceTaskUrl=http://35.189.123.196/sonarqube/api/ce/task?id=AXAu3qlg5b7qNMQhNm02
