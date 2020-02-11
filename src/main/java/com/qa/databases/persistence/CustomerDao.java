@@ -19,8 +19,8 @@ public class CustomerDao implements Dao<Customer> {
 	public String readAll() {
 		String result = "failed";
 		try (Connection connection = DriverManager.getConnection(Config.url, Config.username, Config.password)) {
-			Statement statement = connection.createStatement();
-			ResultSet resultSet = statement.executeQuery("select * from customer");
+			statement = connection.createStatement();
+			resultSet = statement.executeQuery("select * from customer");
 			DataUtil dataUtil = new DataUtil();
 			return dataUtil.resultSet_toString(resultSet);
 		} catch (Exception e) {
@@ -35,7 +35,7 @@ public class CustomerDao implements Dao<Customer> {
 
 	public void create(Customer customer) {
 		try (Connection connection = DriverManager.getConnection(Config.url, Config.username, Config.password)) {
-			Statement statement = connection.createStatement();
+			statement = connection.createStatement();
 			statement.executeUpdate("insert into customer(firstName, lastName) values('" + customer.getFirstName()
 					+ "','" + customer.getSurname() + "')");
 		} catch (Exception e) {
@@ -48,7 +48,7 @@ public class CustomerDao implements Dao<Customer> {
 
 	public void update(long id, Customer customer) {
 		try (Connection connection = DriverManager.getConnection(Config.url, Config.username, Config.password)) {
-			Statement statement = connection.createStatement();
+			statement = connection.createStatement();
 			statement.executeUpdate("update customer set firstName ='" + customer.getFirstName() + "', lastName ='"
 					+ customer.getSurname() + "' where customer_id =" + customer.getId());
 		} catch (Exception e) {
@@ -61,7 +61,7 @@ public class CustomerDao implements Dao<Customer> {
 	@Override
 	public void delete(long id) {
 		try (Connection connection = DriverManager.getConnection(Config.url, Config.username, Config.password)) {
-			Statement statement = connection.createStatement();
+			statement = connection.createStatement();
 			statement.executeUpdate("delete from customer where id = " + id);
 		} catch (Exception e) {
 			e.getStackTrace();

@@ -20,8 +20,8 @@ public class ItemDao implements Dao<Item> {
 		String result = "failed";
 		try (Connection connection = DriverManager.getConnection(Config.url, 
 				Config.username, Config.password)){
-			Statement statement = connection.createStatement();
-			ResultSet resultSet = statement.executeQuery("select * from item");
+			statement = connection.createStatement();
+			resultSet = statement.executeQuery("select * from item");
 			DataUtil dataUtil = new DataUtil();
 			return dataUtil.resultSet_toString(resultSet);
 		} catch (Exception e) {
@@ -36,7 +36,7 @@ public class ItemDao implements Dao<Item> {
 	public void create(Item item) {
 		try (Connection connection = DriverManager.getConnection(Config.url, 
 				Config.username, Config.password)){
-			Statement statement = connection.createStatement();
+			statement = connection.createStatement();
 			statement.executeUpdate("INSERT INTO item(name, value, stock) VALUES ( \'" + item.getName() + "\', \'"
 					+ item.getValue() + "\', \'" + item.getStock() + "\' );");
 		} catch (Exception e) {
@@ -49,7 +49,7 @@ public class ItemDao implements Dao<Item> {
 	public void update(long id, Item item) {
 		try  (Connection connection = DriverManager.getConnection(Config.url, 
 				Config.username, Config.password)){
-			Statement statement = connection.createStatement();
+			statement = connection.createStatement();
 			statement.executeUpdate("update item set name = '" + item.getName() + "', value = '" + item.getValue()
 					+ "', stock = '" + item.getStock() + "' WHERE item_id = '" + id + "';");
 		} catch (Exception e) {
@@ -65,7 +65,7 @@ public class ItemDao implements Dao<Item> {
 
 		try (Connection connection = DriverManager.getConnection(Config.url, 
 				Config.username, Config.password)){
-		Statement statement = connection.createStatement(); 
+		statement = connection.createStatement(); 
 			statement.executeUpdate("delete from item where id = " + id);
 		} catch (Exception e) {
 			e.getStackTrace();
