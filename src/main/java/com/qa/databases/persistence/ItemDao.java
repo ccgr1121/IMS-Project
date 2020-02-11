@@ -12,8 +12,8 @@ import com.qa.databases.utils.Config;
 public class ItemDao implements Dao<Item> {
 
 	public static final Logger logger = Logger.getLogger(ItemDao.class);
-	private static Statement statement = null;
-	private static ResultSet resultSet = null;
+	private Statement statement = null;
+	private ResultSet resultSet = null;
 	
 	
 	public String readAll() {
