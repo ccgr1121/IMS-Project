@@ -28,7 +28,7 @@ public class CustomerServices implements CrudServices<Customer> {
 
 	@Override
 	public void delete(Long id) {
-		// TODO Auto-generated method stub
+		customerDao.delete(id);
 	}
 
 

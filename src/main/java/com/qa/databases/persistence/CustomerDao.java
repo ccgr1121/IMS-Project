@@ -55,8 +55,18 @@ public class CustomerDao implements Dao<Customer> {
 
 	}
 
-	public void delete(Customer customer) {
+	@Override
+	public void delete(long id) {
+		try (Connection connection = DriverManager.getConnection("jdbc:mysql://34.89.101.76:3306/IMS", Config.username,
+				Config.password); Statement statement = connection.createStatement();) {
+			statement.executeUpdate("delete from customer where id = " + id);
+		} catch (Exception e) {
+			e.getStackTrace();
+			e.getMessage();
+		}
 
 	}
+
+
 
 }
