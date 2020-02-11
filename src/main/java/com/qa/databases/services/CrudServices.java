@@ -6,10 +6,7 @@ public interface CrudServices<T> {
 
 	void create(T t);
 
-	void update(T t);
+	void update(Long id, T t);
 
 	void delete(Long id);
-
-	public void update(long item_id, String name, Double value, int stock);
-
 }

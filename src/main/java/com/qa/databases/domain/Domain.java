@@ -2,7 +2,7 @@ package com.qa.databases.domain;
 
 import org.apache.log4j.Logger;
 
-import com.qa.utils.Utils;
+import com.qa.databases.utils.Utils;
 
 public enum Domain {
 

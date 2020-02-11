@@ -38,6 +38,7 @@ public class CustomerDao implements Dao<Customer> {
 			statement.executeUpdate("insert into customer(firstName, lastName) values('" + customer.getFirstName()
 					+ "','" + customer.getSurname() + "')");
 		} catch (Exception e) {
+			e.printStackTrace();
 
 		}
 	}
@@ -46,10 +47,10 @@ public class CustomerDao implements Dao<Customer> {
 		try (Connection connection = DriverManager.getConnection("jdbc:mysql://34.89.101.76:3306/IMS", Config.username,
 				Config.password)) {
 			Statement statement = connection.createStatement();
-			statement.executeUpdate("update customers set firstName ='" + customer.getFirstName() + "', lastName ='"
+			statement.executeUpdate("update customer set firstName ='" + customer.getFirstName() + "', lastName ='"
 					+ customer.getSurname() + "' where customer_id =" + customer.getId());
 		} catch (Exception e) {
-
+			e.printStackTrace();
 		}
 
 	}

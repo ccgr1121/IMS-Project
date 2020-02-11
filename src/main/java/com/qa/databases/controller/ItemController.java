@@ -4,7 +4,7 @@ import org.apache.log4j.Logger;
 
 import com.qa.databases.persistence.Item;
 import com.qa.databases.services.CrudServices;
-import com.qa.utils.Utils;
+import com.qa.databases.utils.Utils;
 
 public class ItemController implements CrudController {
 
@@ -38,7 +38,7 @@ public class ItemController implements CrudController {
 	public void update() {
 		LOGGER.info("Please enter the ID of the item you wish to edit:");
 		String stringID = Utils.getInput();
-		long item_id = Long.parseLong(stringID);
+		long itemId = Long.parseLong(stringID);
 		LOGGER.info("What is the item's new name?");
 		String name = Utils.getInput();
 		LOGGER.info("What is the new value of the order?");
@@ -47,7 +47,7 @@ public class ItemController implements CrudController {
 		LOGGER.info("What is the new stock level of the item?");
 		String stockString = Utils.getInput();
 		int stock = Integer.parseInt(stockString);
-		itemService.update(item_id, name, value, stock);
+		itemService.update(itemId, new Item(name, value, stock));
 		LOGGER.info("Item has been edited successfully");
 
 	}

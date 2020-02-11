@@ -34,19 +34,18 @@ public static final Logger logger = Logger.getLogger(ItemController.class);
 			statement.executeUpdate("INSERT INTO item(name, value, stock) VALUES ( \'" + item.getName() + "\', \'"
 					+ item.getValue() + "\', \'" + item.getStock() + "\' );");
 		} catch (Exception e) {
-			
+			e.printStackTrace();
 		} 
 	}
 
 	public void update(long id, Item item) {
 		try (Connection connection = DriverManager.getConnection("jdbc:mysql://34.89.101.76:3306/IMS", Config.username, Config.password)){
 			Statement statement = connection.createStatement();
-			statement.executeUpdate("UPDATE item SET name = \'" + item.getName() + "\', value = \'" + item.getValue() + "\', stock = \'" + item.getStock()
-					+ "\', WHERE item_id = \'" + item.getItem_id() + "\';");
+			statement.executeUpdate("update item set name = '" + item.getName() + "', value = '" + item.getValue() + "', stock = '" + item.getStock()
+					+ "' WHERE item_id = '" + id + "';");
 		} catch (Exception e) {
-			
+			e.printStackTrace();
 		} 
-		
 		
 	}
 

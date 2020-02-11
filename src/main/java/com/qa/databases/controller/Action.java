@@ -2,7 +2,7 @@ package com.qa.databases.controller;
 
 import org.apache.log4j.Logger;
 
-import com.qa.utils.Utils;
+import com.qa.databases.utils.Utils;
 
 /**
  * Action is a collection of commands which are used to determine the type of function to apply to an entity.

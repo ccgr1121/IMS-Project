@@ -32,6 +32,7 @@ public class Ims {
 		case CUSTOMER: 
 			CustomerController customerController = new CustomerController(new CustomerServices(new CustomerDao()));
 			doAction(customerController, action);
+			break;
 		case ITEM:
 			ItemController itemController = new ItemController(new ItemServices(new ItemDao()));
 			doAction(itemController, action);
