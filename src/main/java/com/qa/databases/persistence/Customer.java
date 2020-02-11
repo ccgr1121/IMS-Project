@@ -46,5 +46,5 @@ public class Customer{
 	}
 
 }
-
-select sum(item_quantity*sold_cost) where order_id = id
+//
+//select sum(item_quantity*sold_cost) where order_id = id
