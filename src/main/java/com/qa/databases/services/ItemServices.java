@@ -28,7 +28,7 @@ public class ItemServices implements CrudServices<Item> {
 
 	@Override
 	public void delete(Long id) {
-		// TODO Auto-generated method stub
+		itemDao.delete(id);
 
 	}
 
