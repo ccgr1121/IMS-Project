@@ -19,7 +19,7 @@ public class ItemController implements CrudController {
 	public void readAll() {
 		itemService.readAll();
 		LOGGER.info("Current list of Items");
-		System.out.println(itemService.readAll());
+		LOGGER.info(itemService.readAll());
 	}
 
 	public void create() {

@@ -2,7 +2,13 @@ package com.qa.databases.utils;
 
 public class Config {
 
-	public static final String username = "Tsar_Charlie";
-	public static final String password = "Skippy101!";
+	private static final String username = "Tsar_Charlie";
+	private static final String password = "Skippy101!";
+	public static String getUsername() {
+		return username;
+	}
+	public static String getPassword() {
+		return password;
+	}
 
 }

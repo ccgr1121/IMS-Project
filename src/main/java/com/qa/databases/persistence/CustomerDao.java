@@ -9,17 +9,17 @@ import org.apache.log4j.Logger;
 
 import com.qa.databases.DataUtil;
 import com.qa.databases.controller.CustomerController;
-import com.qa.databases.persistence.Customer;
 import com.qa.databases.utils.Config;
 
 public class CustomerDao implements Dao<Customer> {
+	public static final Logger logger = Logger.getLogger(CustomerDao.class);
 
-	public static final Logger logger = Logger.getLogger(CustomerController.class);
+	Connection connection = DriverManager.getConnection("jdbc:mysql://34.89.101.76:3306/IMS", Config.username,
+			Config.password);
 
 	public String readAll() {
 		String result = "failed";
-		try (Connection connection = DriverManager.getConnection("jdbc:mysql://34.89.101.76:3306/IMS", Config.username,
-				Config.password)) {
+		try {
 			Statement statement = connection.createStatement();
 			ResultSet resultSet = statement.executeQuery("select * from customer");
 			DataUtil dataUtil = new DataUtil();
@@ -27,13 +27,17 @@ public class CustomerDao implements Dao<Customer> {
 		} catch (Exception e) {
 			result = "exception fail";
 			e.printStackTrace();
+		} finally {
+			if (result != "exception fail") {
+				statement.close();
+				resultSet.close();
+			}
 		}
 		return result;
 	}
 
 	public void create(Customer customer) {
-		try (Connection connection = DriverManager.getConnection("jdbc:mysql://34.89.101.76:3306/IMS", Config.username,
-				Config.password)) {
+		try {
 			Statement statement = connection.createStatement();
 			statement.executeUpdate("insert into customer(firstName, lastName) values('" + customer.getFirstName()
 					+ "','" + customer.getSurname() + "')");
@@ -44,29 +48,25 @@ public class CustomerDao implements Dao<Customer> {
 	}
 
 	public void update(long id, Customer customer) {
-		try (Connection connection = DriverManager.getConnection("jdbc:mysql://34.89.101.76:3306/IMS", Config.username,
-				Config.password)) {
+		try {
 			Statement statement = connection.createStatement();
 			statement.executeUpdate("update customer set firstName ='" + customer.getFirstName() + "', lastName ='"
 					+ customer.getSurname() + "' where customer_id =" + customer.getId());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
 	}
 
 	@Override
 	public void delete(long id) {
-		try (Connection connection = DriverManager.getConnection("jdbc:mysql://34.89.101.76:3306/IMS", Config.username,
-				Config.password); Statement statement = connection.createStatement();) {
+		try {
+			Statement statement = connection.createStatement();
 			statement.executeUpdate("delete from customer where id = " + id);
-		} catch (Exception e) {
+			}catch (Exception e) {
 			e.getStackTrace();
 			e.getMessage();
 		}
-
 	}
-
-
-
 }
+
+	
