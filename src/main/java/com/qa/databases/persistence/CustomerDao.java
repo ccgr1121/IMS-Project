@@ -3,13 +3,13 @@ package com.qa.databases.persistence;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Statement;
 
 import org.apache.log4j.Logger;
 
 import com.qa.databases.DataUtil;
 import com.qa.databases.utils.Config;
+import com.qa.databases.utils.Utils;
 
 public class CustomerDao implements Dao<Customer> {
 	public static final Logger logger = Logger.getLogger(CustomerDao.class);
@@ -27,7 +27,7 @@ public class CustomerDao implements Dao<Customer> {
 			result = "exception fail";
 			e.printStackTrace();
 		} finally {
-			close();
+			Utils.close(statement, resultSet);
 		}
 
 		return result;
@@ -42,7 +42,7 @@ public class CustomerDao implements Dao<Customer> {
 			e.printStackTrace();
 
 		} finally {
-			close();
+			Utils.close(statement, resultSet);
 		}
 	}
 
@@ -54,7 +54,7 @@ public class CustomerDao implements Dao<Customer> {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			close();
+			Utils.close(statement, resultSet);
 		}
 	}
 
@@ -67,23 +67,8 @@ public class CustomerDao implements Dao<Customer> {
 			e.getStackTrace();
 			e.getMessage();
 		} finally {
-			close();
+			Utils.close(statement, resultSet);
 		}
 	}
 
-	public void close() {
-		try {
-			if (statement != null)
-				statement.close();
-		} catch (SQLException se2) {
-			se2.printStackTrace();
-		} // nothing we can do
-		try {
-			if (resultSet != null)
-				resultSet.close();
-		} catch (SQLException se) {
-			se.printStackTrace();
-		}
-
-	}
 }
