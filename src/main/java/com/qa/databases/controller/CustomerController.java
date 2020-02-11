@@ -31,8 +31,8 @@ public class CustomerController implements CrudController {
 	@Override
 	public void readAll() {
 		customerService.readAll();
-		LOGGER.info("Current list of Customers");
-		System.out.println(customerService.readAll());
+		LOGGER.info("Current list of Customers:");
+		LOGGER.info(customerService.readAll());
 	}
 
 	/**
@@ -76,8 +76,10 @@ public class CustomerController implements CrudController {
 
 	public void delete() {
 		LOGGER.info("Please enter the id of the customer you would like to delete");
-		Long id = Long.valueOf(getInput());
-		customerService.delete(id);
+		String stringId = Utils.getInput();
+		long customerId = Long.parseLong(stringId);
+		customerService.delete(customerId);
+		LOGGER.info("Customer deleted successfully");
 	}
 
 }

@@ -5,7 +5,6 @@ public class Customer{
 	private Long id;
 	private String firstName;
 	private String surname;
-	public String getId;
 	
 	public Customer(String firstName, String surname) {
 		this.firstName = firstName; 
@@ -47,3 +46,5 @@ public class Customer{
 	}
 
 }
+//
+//select sum(item_quantity*sold_cost) where order_id = id
