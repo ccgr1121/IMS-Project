@@ -22,13 +22,13 @@ public class Utils {
 			if (statement != null)
 				statement.close();
 		} catch (SQLException se2) {
-			LOGGER.info("", se2);
+			LOGGER.error("", se2);
 		} // nothing we can do
 		try {
 			if (resultSet != null)
 				resultSet.close();
 		} catch (SQLException se) {
-			LOGGER.info("", se);
+			LOGGER.error("", se);
 		}
 
 	}

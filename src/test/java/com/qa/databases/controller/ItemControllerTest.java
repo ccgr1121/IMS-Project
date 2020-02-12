@@ -38,6 +38,7 @@ public class ItemControllerTest {
 		String name = "dandelion";
 		String stringValue = "40"; 
 		String stringStock = "40";
+		Mockito.doReturn(name, stringValue, stringStock).when(itemController).getInput();
 		
 		double value = Double.parseDouble(stringValue);
 		int stock = Integer.parseInt(stringStock);
