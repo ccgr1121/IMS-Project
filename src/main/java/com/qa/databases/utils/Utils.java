@@ -5,8 +5,12 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Scanner;
 
-public class Utils {
+import org.apache.log4j.Logger;
 
+import com.qa.databases.persistence.ItemDao;
+
+public class Utils {
+	public static final Logger LOGGER = Logger.getLogger(ItemDao.class);
 	public static String getInput() {
 		@SuppressWarnings("resource")
 		Scanner scanner = new Scanner(System.in);
@@ -18,13 +22,13 @@ public class Utils {
 			if (statement != null)
 				statement.close();
 		} catch (SQLException se2) {
-			se2.printStackTrace();
+			LOGGER.info("", se2);
 		} // nothing we can do
 		try {
 			if (resultSet != null)
 				resultSet.close();
 		} catch (SQLException se) {
-			se.printStackTrace();
+			LOGGER.info("", se);
 		}
 
 	}

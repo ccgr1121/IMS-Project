@@ -11,7 +11,7 @@ import com.qa.databases.utils.Utils;
 
 public class ItemDao implements Dao<Item> {
 
-	public static final Logger logger = Logger.getLogger(ItemDao.class);
+	public static final Logger LOGGER = Logger.getLogger(ItemDao.class);
 	private Statement statement = null;
 	private ResultSet resultSet = null;
 	
@@ -26,7 +26,7 @@ public class ItemDao implements Dao<Item> {
 			return dataUtil.resultSet_toString(resultSet);
 		} catch (Exception e) {
 			result = "exception fail";
-			e.printStackTrace();
+			LOGGER.info("Failed to read database", e);
 		}finally {
 			Utils.close(statement, resultSet);
 		}
@@ -41,7 +41,7 @@ public class ItemDao implements Dao<Item> {
 			statement.executeUpdate("INSERT INTO item(name, value, stock) VALUES ( \'" + item.getName() + "\', \'"
 					+ item.getValue() + "\', \'" + item.getStock() + "\' );");
 		} catch (Exception e) {
-			e.printStackTrace();
+			LOGGER.info("Failed to create entry in database", e);
 		}finally {
 			Utils.close(statement, resultSet);
 		}
@@ -54,7 +54,7 @@ public class ItemDao implements Dao<Item> {
 			statement.executeUpdate("update item set name = '" + item.getName() + "', value = '" + item.getValue()
 					+ "', stock = '" + item.getStock() + "' WHERE item_id = '" + id + "';");
 		} catch (Exception e) {
-			e.printStackTrace();
+			LOGGER.info("Failed to edit entry in database", e);
 		}finally {
 			Utils.close(statement, resultSet);
 		}
@@ -69,8 +69,7 @@ public class ItemDao implements Dao<Item> {
 		statement = connection.createStatement(); 
 			statement.executeUpdate("delete from item where item_id = " + id);
 		} catch (Exception e) {
-			e.getStackTrace();
-			e.getMessage();
+			LOGGER.info("Failed to delete from database", e);
 		}finally {
 			Utils.close(statement, resultSet);
 		}

@@ -11,7 +11,7 @@ import com.qa.databases.utils.Utils;
 
 public class OrderDao implements Dao<Order>{
 	
-	public static final Logger logger = Logger.getLogger(ItemDao.class);
+	public static final Logger LOGGER = Logger.getLogger(ItemDao.class);
 	private Statement statement = null;
 	private ResultSet resultSet = null;
 
@@ -26,7 +26,7 @@ public class OrderDao implements Dao<Order>{
 			return dataUtil.resultSet_toString(resultSet);
 		} catch (Exception e) {
 			result = "exception fail";
-			e.printStackTrace();
+			LOGGER.info("Failed to read database", e);
 		}finally {
 			Utils.close(statement, resultSet);
 		}
@@ -41,8 +41,7 @@ public class OrderDao implements Dao<Order>{
 		statement = connection.createStatement(); 
 			statement.executeUpdate("delete from orders where id = " + id);
 		} catch (Exception e) {
-			e.getStackTrace();
-			e.getMessage();
+			LOGGER.info("Failed to delete from database", e);
 		}finally {
 			Utils.close(statement, resultSet);
 		}
