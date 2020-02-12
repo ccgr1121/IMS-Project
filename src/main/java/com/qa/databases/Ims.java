@@ -6,8 +6,10 @@ import org.apache.log4j.Logger;
 
 import com.qa.databases.persistence.CustomerDao;
 import com.qa.databases.persistence.ItemDao;
+import com.qa.databases.persistence.OrderDao;
 import com.qa.databases.services.CustomerServices;
 import com.qa.databases.services.ItemServices;
+import com.qa.databases.services.OrderServices;
 import com.qa.databases.utils.Config;
 import com.qa.databases.utils.Utils;
 import com.qa.databases.domain.Domain;
@@ -15,6 +17,7 @@ import com.qa.databases.controller.Action;
 import com.qa.databases.controller.CrudController;
 import com.qa.databases.controller.CustomerController;
 import com.qa.databases.controller.ItemController;
+import com.qa.databases.controller.OrderController;
 
 public class Ims {
 
@@ -47,6 +50,8 @@ public class Ims {
 			doAction(itemController, action);
 			break; 
 		case ORDER:
+			OrderController orderController = new OrderController(new OrderServices(new OrderDao()));
+			doAction(orderController, action);
 			break;
 		case STOP:
 			break;
