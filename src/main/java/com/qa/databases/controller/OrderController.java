@@ -1,5 +1,7 @@
 package com.qa.databases.controller;
 
+import java.util.List;
+
 import org.apache.log4j.Logger;
 
 import com.qa.databases.persistence.Order;
@@ -10,7 +12,7 @@ import com.qa.databases.utils.Utils;
  * Takes in customer details for CRUD functionality
  *
  */
-public class OrderController implements CrudController {
+public class OrderController implements CrudController<Order> {
 
 	public static final Logger LOGGER = Logger.getLogger(OrderController.class);
 
@@ -28,19 +30,22 @@ public class OrderController implements CrudController {
 	 */
 
 	@Override
-	public void readAll() {
-		orderService.readAll();
-		LOGGER.info("Current list of Orders:");
-		LOGGER.info(orderService.readAll());
+	public List<Order> readAll() {
+		List<Order> orders = orderService.readAll();
+		for(Order order: orders) {
+			LOGGER.info(order.toString());
+		}
+		return orders;
 	}
-
 	/**
 	 * Creates an order by taking in user input
+	 * @return 
 	 */
 
 	@Override
-	public void create() {
+	public Order create() {
 		LOGGER.info("THIS FUNCTIONALITY HAS NOT BEEN IMPLEMENTED YET");
+		return null;
 
 	}
 
@@ -51,8 +56,9 @@ public class OrderController implements CrudController {
 	 */
 	@Override
 
-	public void update() {
+	public Order update() {
 		LOGGER.info("THIS FUNCTIONALITY HAS NOT BEEN IMPLEMENTED YET");
+		return null;
 
 	}
 

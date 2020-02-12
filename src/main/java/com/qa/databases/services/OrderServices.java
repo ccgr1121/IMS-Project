@@ -1,6 +1,9 @@
 package com.qa.databases.services;
 
 import com.qa.databases.persistence.Order;
+
+import java.util.List;
+
 import com.qa.databases.persistence.Dao;
 
 public class OrderServices implements CrudServices<Order> {
@@ -12,18 +15,18 @@ public class OrderServices implements CrudServices<Order> {
 	}
 
 	@Override
-	public void create(Order order) {
-		orderDao.create(order);
+	public Order create(Order order) {
+		return orderDao.create(order);
 	}
 
 	@Override
-	public String readAll() {
+	public List<Order> readAll() {
 		return orderDao.readAll();
 	}
 
 	@Override
-	public void update(Long id, Order t) {
-		orderDao.update(id, t);
+	public Order update(Long id, Order t) {
+		return orderDao.update(id, t);
 
 	}
 

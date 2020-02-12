@@ -1,18 +1,21 @@
 package com.qa.databases.controller;
 
+import java.util.List;
+
 /**
  * Create, Read, Update and Delete controller.
  * Takes in inputs for each action to be sent to a service class
  */
 
-public interface CrudController {
+public interface CrudController<T> {
     
-    void readAll();
+    List<T> readAll();
      
-    void create();
+    T create();
      
-    void update();
+    T update();
      
     void delete();
+
 
 }
