@@ -12,7 +12,7 @@ import com.qa.databases.utils.Config;
 import com.qa.databases.utils.Utils;
 
 public class CustomerDao implements Dao<Customer> {
-	public static final Logger logger = Logger.getLogger(CustomerDao.class);
+	public static final Logger LOGGER = Logger.getLogger(CustomerDao.class);
 	private Statement statement = null;
 	private ResultSet resultSet = null;
 
@@ -25,7 +25,7 @@ public class CustomerDao implements Dao<Customer> {
 			return dataUtil.resultSet_toString(resultSet);
 		} catch (Exception e) {
 			result = "exception fail";
-			e.printStackTrace();
+			LOGGER.info("Failed to read database", e);
 		} finally {
 			Utils.close(statement, resultSet);
 		}
@@ -39,7 +39,7 @@ public class CustomerDao implements Dao<Customer> {
 			statement.executeUpdate("insert into customer(firstName, lastName) values('" + customer.getFirstName()
 					+ "','" + customer.getSurname() + "')");
 		} catch (Exception e) {
-			e.printStackTrace();
+			LOGGER.info("Failed to create entry in database", e);
 
 		} finally {
 			Utils.close(statement, resultSet);
@@ -52,7 +52,7 @@ public class CustomerDao implements Dao<Customer> {
 			statement.executeUpdate("update customer set firstName ='" + customer.getFirstName() + "', lastName ='"
 					+ customer.getSurname() + "' where customer_id =" + customer.getId());
 		} catch (Exception e) {
-			e.printStackTrace();
+			LOGGER.info("Failed to edit entry in database", e);
 		} finally {
 			Utils.close(statement, resultSet);
 		}
@@ -64,8 +64,7 @@ public class CustomerDao implements Dao<Customer> {
 			statement = connection.createStatement();
 			statement.executeUpdate("delete from customer where customer_id = " + id);
 		} catch (Exception e) {
-			e.getStackTrace();
-			e.getMessage();
+			LOGGER.info("Failed to delete from database", e);
 		} finally {
 			Utils.close(statement, resultSet);
 		}
