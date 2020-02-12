@@ -1,12 +1,14 @@
 package com.qa.databases.persistence;
 
+import java.util.List;
+
 public interface Dao<T> {
 
-    String readAll();
+    List<T> readAll();
      
-    void create(T t);
+    T create(T t);
      
-    void update(long id, T t);
+    T update(long id, T t);
 
 	void delete(long id);
 }

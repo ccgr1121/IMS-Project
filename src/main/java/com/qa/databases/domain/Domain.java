@@ -11,6 +11,14 @@ public enum Domain {
 	ORDER("Purchases of items"),
 	STOP("To close the application");
 	
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
 	public static final Logger LOGGER = Logger.getLogger(Domain.class);
 
 	private String description;

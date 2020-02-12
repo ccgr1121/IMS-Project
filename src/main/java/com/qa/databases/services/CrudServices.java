@@ -1,13 +1,15 @@
 
 package com.qa.databases.services;
 
+import java.util.List;
+
 public interface CrudServices<T> {
 
-	public String readAll();
+	List<T> readAll();
 
-	void create(T t);
+	T create(T t);
 
-	void update(Long id, T t);
+	T update(Long id, T t);
 
 	void delete(Long id);
 }
