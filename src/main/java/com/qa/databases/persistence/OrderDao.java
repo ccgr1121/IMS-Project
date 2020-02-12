@@ -61,7 +61,7 @@ public class OrderDao implements Dao<Order>{
 		
 	}
 	
-	
+	//select sum(item_quantity*value) where order_id = item_id
 	
 	
 	

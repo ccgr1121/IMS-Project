@@ -67,7 +67,7 @@ public class ItemDao implements Dao<Item> {
 		try (Connection connection = DriverManager.getConnection(Config.url, 
 				Config.username, Config.password)){
 		statement = connection.createStatement(); 
-			statement.executeUpdate("delete from item where id = " + id);
+			statement.executeUpdate("delete from item where item_id = " + id);
 		} catch (Exception e) {
 			e.getStackTrace();
 			e.getMessage();

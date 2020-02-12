@@ -62,7 +62,7 @@ public class CustomerDao implements Dao<Customer> {
 	public void delete(long id) {
 		try (Connection connection = DriverManager.getConnection(Config.url, Config.username, Config.password)) {
 			statement = connection.createStatement();
-			statement.executeUpdate("delete from customer where id = " + id);
+			statement.executeUpdate("delete from customer where customer_id = " + id);
 		} catch (Exception e) {
 			e.getStackTrace();
 			e.getMessage();
