@@ -1,16 +1,33 @@
 package com.qa.databases.utils;
 
 public class Config {
+	/**
+	 * @author Charlie
+	 */
+	private String username;
 
-	public static String username;
-	public static String password;
-	public static final String url = "jdbc:mysql://34.89.101.76:3306/IMS\\";
-			
-	public static String getUsername() {
+	private String password;
+	public static String url = "jdbc:mysql://34.89.101.76:3306/IMS";
+
+	public Config() {
+
+	}
+
+	public String getUsername() {
 		return username;
 	}
-	public static String getPassword() {
+
+	public String getPassword() {
 		return password;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+
 	}
 
 }

@@ -1,6 +1,8 @@
 package com.qa.databases.services;
 
-import com.qa.databases.persistence.Item;
+import java.util.List;
+
+import com.qa.databases.domain.Item;
 import com.qa.databases.persistence.Dao;
 
 public class ItemServices implements CrudServices<Item> {
@@ -12,18 +14,18 @@ public class ItemServices implements CrudServices<Item> {
 	}
 
 	@Override
-	public void create(Item item) {
-		itemDao.create(item);
+	public Item create(Item item) {
+		return itemDao.create(item);
 	}
 
 	@Override
-	public String readAll() {
+	public List<Item> readAll() {
 		return itemDao.readAll();
 	}
 
 	@Override
-	public void update(Long id, Item t) {
-		itemDao.update(id, t);
+	public Item update(Long id, Item t) {
+		return itemDao.update(id, t);
 	}
 
 	@Override

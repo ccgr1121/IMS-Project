@@ -9,7 +9,7 @@ import com.qa.databases.utils.Utils;
  * apply to an entity.
  *
  */
-
+ 
 
 public enum Action {
 
@@ -21,7 +21,7 @@ public enum Action {
 
 	private String description;
  
-	Action(String description) {
+	Action(String description) { 
 		this.description = description;
 	}
 

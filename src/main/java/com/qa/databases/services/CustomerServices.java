@@ -1,6 +1,8 @@
 package com.qa.databases.services;
 
-import com.qa.databases.persistence.Customer;
+import java.util.List;
+
+import com.qa.databases.domain.Customer;
 import com.qa.databases.persistence.Dao;
 
 public class CustomerServices implements CrudServices<Customer> {
@@ -12,24 +14,25 @@ public class CustomerServices implements CrudServices<Customer> {
 	}
 	
 	@Override
-	public void create(Customer customer) {
-		customerDao.create(customer);
+	public Customer create(Customer customer) {
+		return customerDao.create(customer);
 	}
-	
+	 
 	@Override
-	public String readAll() {
+	public List<Customer> readAll() {
 		return customerDao.readAll();
 	}
 
 	@Override
-	public void update(Long id, Customer t) {
-		customerDao.update(id, t);
+	public Customer update(Long id, Customer t) {
+		return customerDao.update(id, t);
 	}
 
-	@Override
+	@Override 
 	public void delete(Long id) {
 		customerDao.delete(id);
 	}
+
 
 
 }
