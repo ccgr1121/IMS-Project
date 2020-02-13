@@ -7,7 +7,7 @@ public class Config {
 	private String username;
 
 	private String password;
-	public static String url = "jdbc:mysql://34.89.101.76:3306/IMS";
+	public static final String url = "jdbc:mysql://34.89.101.76:3306/IMS";
 
 	public Config() {
 
