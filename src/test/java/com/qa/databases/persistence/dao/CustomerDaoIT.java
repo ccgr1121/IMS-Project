@@ -31,4 +31,3 @@ public class CustomerDaoIT {
 		assertTrue(customers.size() > 0);
 	} 
 }
-    
