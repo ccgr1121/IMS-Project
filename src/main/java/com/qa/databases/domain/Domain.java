@@ -8,16 +8,12 @@ public enum Domain {
 
 	CUSTOMER("Information about customers"),
 	ITEM("Individual Items"), 
-	ORDER("Purchases of items"),
+	ORDER("Purchases of items"), 
 	STOP("To close the application");
 	
 	public String getDescription() {
 		return description;
 	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	} 
 
 	public static final Logger LOGGER = Logger.getLogger(Domain.class);
 

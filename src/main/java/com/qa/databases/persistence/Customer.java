@@ -9,7 +9,7 @@ public class Customer {
 	public Customer(Long id, String firstName, String surname) {
 		this.id = id;
 		this.firstName = firstName;
-		this.surname = surname;
+		this.surname = surname; 
 	}
 	
 	public Customer(String firstName, String surname) {

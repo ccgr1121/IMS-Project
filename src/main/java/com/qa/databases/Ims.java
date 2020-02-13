@@ -38,7 +38,7 @@ public class Ims {
 		Domain domain = Domain.getDomain();
 		LOGGER.info("What would you like to do with " + domain.name().toLowerCase() + ":");
 
-		Action.printActions();
+		Action.printActions(); 
 		Action action = Action.getAction();
 
 		switch (domain) {

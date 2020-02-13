@@ -9,7 +9,7 @@ import com.qa.databases.utils.Utils;
  * apply to an entity.
  *
  */
-
+ 
 
 public enum Action {
 

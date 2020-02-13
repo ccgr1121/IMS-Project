@@ -21,7 +21,7 @@ public class Utils {
 		try {
 			if (statement != null)
 				statement.close();
-		} catch (SQLException se2) {
+		} catch (SQLException se2) { 
 			LOGGER.error("", se2);
 		} // nothing we can do
 		try {

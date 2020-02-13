@@ -13,7 +13,7 @@ public class Config {
 			instance = new Config();
 		}
 		return instance;
-	}
+	} 
 	
 	
 	private Config() {
