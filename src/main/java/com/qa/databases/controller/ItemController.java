@@ -3,7 +3,8 @@ package com.qa.databases.controller;
 import java.util.List;
 
 import org.apache.log4j.Logger;
-import com.qa.databases.persistence.Item;
+
+import com.qa.databases.domain.Item;
 import com.qa.databases.services.CrudServices;
 import com.qa.databases.utils.Utils;
 

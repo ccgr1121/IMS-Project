@@ -1,4 +1,4 @@
-package com.qa.databases.persistence;
+package com.qa.databases.domain;
 
 public class Customer {
 

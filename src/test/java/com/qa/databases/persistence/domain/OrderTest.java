@@ -9,7 +9,7 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.qa.databases.persistence.Order;
+import com.qa.databases.domain.Order;
 
 public class OrderTest {
 

@@ -11,7 +11,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import com.qa.databases.persistence.Item;
+import com.qa.databases.domain.Item;
 import com.qa.databases.persistence.ItemDao;
 import com.qa.databases.utils.Config;
 

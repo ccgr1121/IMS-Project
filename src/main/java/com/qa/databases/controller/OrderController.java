@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
-import com.qa.databases.persistence.Order;
+import com.qa.databases.domain.Order;
 import com.qa.databases.services.CrudServices;
 import com.qa.databases.utils.Utils;
 

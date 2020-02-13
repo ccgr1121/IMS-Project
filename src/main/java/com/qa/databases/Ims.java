@@ -1,7 +1,5 @@
 package com.qa.databases;
 
-import java.sql.SQLException;
-
 import org.apache.log4j.Logger;
 
 import com.qa.databases.controller.Action;
@@ -18,18 +16,15 @@ import com.qa.databases.services.ItemServices;
 import com.qa.databases.services.OrderServices;
 import com.qa.databases.utils.Config;
 import com.qa.databases.utils.Utils;
-
 public class Ims {
 
 	public static final Logger LOGGER = Logger.getLogger(Ims.class);
 
-	Config config = new Config();
-
 	public void imsSystem() {
-		LOGGER.info("What is your username");
-		config.setUsername(Utils.getInput());
-		LOGGER.info("What is your password");
-		config.setPassword(Utils.getInput());
+//		LOGGER.info("What is your username");
+//		Config.setUsername(Utils.getInput());
+//		LOGGER.info("What is your password");
+//		Config.setPassword(Utils.getInput());
 		boolean exit = true;
 		while (exit) {
 
@@ -56,6 +51,7 @@ public class Ims {
 				doAction(orderController, action);
 				break;
 			case STOP:
+				exit = false;
 				break;
 			}
 		}
@@ -77,8 +73,6 @@ public class Ims {
 			crudController.delete();
 			break;
 		case RETURN:
-			break;
-		default:
 			break;
 		}
 	}

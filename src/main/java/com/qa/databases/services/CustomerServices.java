@@ -1,8 +1,8 @@
 package com.qa.databases.services;
 
-import java.util.List; 
+import java.util.List;
 
-import com.qa.databases.persistence.Customer;
+import com.qa.databases.domain.Customer;
 import com.qa.databases.persistence.Dao;
 
 public class CustomerServices implements CrudServices<Customer> {

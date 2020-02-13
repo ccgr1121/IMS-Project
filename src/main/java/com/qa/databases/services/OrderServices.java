@@ -1,9 +1,8 @@
 package com.qa.databases.services;
 
-import com.qa.databases.persistence.Order;
-
 import java.util.List;
 
+import com.qa.databases.domain.Order;
 import com.qa.databases.persistence.Dao;
 
 public class OrderServices implements CrudServices<Order> {

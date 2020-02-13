@@ -12,7 +12,8 @@ import org.mockito.Mock;
 import org.mockito.Mockito; 
 import org.mockito.Spy;
 import org.mockito.junit.MockitoJUnitRunner;
-import com.qa.databases.persistence.Item;
+
+import com.qa.databases.domain.Item;
 import com.qa.databases.services.ItemServices;
 
 @RunWith(MockitoJUnitRunner.class)
