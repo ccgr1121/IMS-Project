@@ -24,9 +24,9 @@ public class OrderDao implements Dao<Order> {
 	}
 
 	public List<Order> readAll() {
-		try (Connection connection = DriverManager.getConnection(Config.url, Config.username, Config.password)) {
-			statement = connection.createStatement();
-			ResultSet resultSet = statement.executeQuery("select * from orders");
+		try (Connection connection = DriverManager.getConnection(Config.url, Config.username, Config.password);
+			Statement statement = connection.createStatement();
+			ResultSet resultSet = statement.executeQuery("select * from orders");){
 			ArrayList<Order> orders = new ArrayList<>();
 			while (resultSet.next()) {
 				orders.add(orderFromResultSet(resultSet));
