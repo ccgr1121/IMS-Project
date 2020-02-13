@@ -1,6 +1,6 @@
 package com.qa.databases.persistence;
 
-import java.sql.Connection;
+import java.sql.Connection; 
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -36,7 +36,7 @@ public class CustomerDao implements Dao<Customer> {
 			}
 			return customers;
 		} catch (SQLException e) {
-			LOGGER.info("Failed to edit entry in database", e);
+			LOGGER.error("Failed to read database", e);
 		}
 		return new ArrayList<>();
 	}

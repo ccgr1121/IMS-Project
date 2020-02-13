@@ -29,7 +29,7 @@ public class Ims {
 		LOGGER.info("What is your username?");
 		config.getUsername(); 
 
-		LOGGER.info("What is your password?");
+		LOGGER.info("What is your pass word?");
 		config.getPassword();
 
 		LOGGER.info("Which entity would you like to use?");

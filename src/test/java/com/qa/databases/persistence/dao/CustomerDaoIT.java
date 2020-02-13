@@ -22,8 +22,7 @@ public class CustomerDaoIT {
 	private CustomerDao dao;
 	
 	@Mock
-	private Config config;
-
+	private Config config; 
 	@Test
 	public void testDatabaseHasValues() {
 		when(config.getUsername()).thenReturn("Tsar_Charlie");
@@ -32,4 +31,4 @@ public class CustomerDaoIT {
 		assertTrue(customers.size() > 0);
 	} 
 }
-   
+    

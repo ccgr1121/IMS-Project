@@ -106,18 +106,18 @@ public class ItemTest {
 		assertFalse(item.equals(other));
 	}
 
-//	@Test
-//	public void nullValue() { 
-//		item.setValue(null);
-//		assertFalse(item.equals(other));
-//	} 
-//
-//	@Test
-//	public void nullValueOnBoth() {
-//		item.setValue(null);
-//		other.setValue(null);
-//		assertFalse(item.equals(other));
-//	}
+	@Test
+	public void nullValue() { 
+		item.setValue(null);
+		assertFalse(item.equals(other));
+	} 
+
+	@Test
+	public void nullValueOnBoth() {
+		item.setValue(null);
+		other.setValue(null);
+		assertFalse(item.equals(other));
+	}
 
 	@Test
 	public void otherValueDifferent() {
@@ -131,12 +131,12 @@ public class ItemTest {
 		assertFalse(item.equals(other));
 	} 
 
-//	@Test
-//	public void nullStockOnBoth() {
-//		item.setStock(null);
-//		other.setStock(null);
-//		assertFalse(item.equals(other));
-//	}
+	@Test
+	public void nullStockOnBoth() {
+		item.setStock(null);
+		other.setStock(null);
+		assertFalse(item.equals(other));
+	}
 
 	@Test
 	public void otherStockDifferent() {
@@ -161,12 +161,12 @@ public class ItemTest {
 		assertEquals(item.hashCode(), other.hashCode());
 	}
 
-//	@Test
-//	public void hashCodeTestWithNull() {
-//		Item item = new Item("null", null, null);
-//		Item other = new Item("null", null, null);
-//		assertEquals(item.hashCode(), other.hashCode());
-//	}
+	@Test
+	public void hashCodeTestWithNull() {
+		Item item = new Item("null", null, null);
+		Item other = new Item("null", null, null);
+		assertEquals(item.hashCode(), other.hashCode());
+	}
 
 	@Test
 	public void toStringTest() {

@@ -28,7 +28,7 @@ public class OrderDao implements Dao<Order> {
 		double value = resultSet.getDouble("value");
 		return new Order(id, fkCustomerId, fkItemId, quantity, value);
 	}
-
+ 
 	public List<Order> readAll() { 
 		String result = "failed";
 		try (Connection connection = DriverManager.getConnection(Config.url, config.getUsername(), config.getPassword())) {

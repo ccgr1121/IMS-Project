@@ -17,7 +17,7 @@ public enum Domain {
 
 	public void setDescription(String description) {
 		this.description = description;
-	}
+	} 
 
 	public static final Logger LOGGER = Logger.getLogger(Domain.class);
 

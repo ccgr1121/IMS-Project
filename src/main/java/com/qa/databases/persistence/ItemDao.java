@@ -16,7 +16,7 @@ public class ItemDao implements Dao<Item> {
 	private Statement statement = null;
 
 	private Config config = Config.getInstance();
-
+ 
 	Item itemFromResultSet(ResultSet resultSet) throws SQLException {
 		Long id = resultSet.getLong("id");
 		String name = resultSet.getString("name");
@@ -27,16 +27,16 @@ public class ItemDao implements Dao<Item> {
  
 	public List<Item> readAll() {
 		try (Connection connection = DriverManager.getConnection(Config.url, config.getUsername(),
-				config.getPassword())) {
-			statement = connection.createStatement();
-			ResultSet resultSet = statement.executeQuery("select * from item");
+			config.getPassword());
+			Statement statement = connection.createStatement();
+			ResultSet resultSet = statement.executeQuery("select * from item");){
 			ArrayList<Item> items = new ArrayList<>();
 			while (resultSet.next()) {
 				items.add(itemFromResultSet(resultSet));
 			}
 			return items;
-		} catch (Exception e) {
-			LOGGER.info("Failed to read database", e);
+		} catch (SQLException e) {
+			LOGGER.error("Failed to read database", e);
 		}
 		return new ArrayList<>();
 	}
