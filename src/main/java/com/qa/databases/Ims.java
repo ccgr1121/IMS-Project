@@ -25,11 +25,11 @@ public class Ims {
 
 	public void imsSystem() throws SQLException {
 
-		LOGGER.info("What is your username?");
-		config.getUsername();
-
-		LOGGER.info("What is your pass word?");
-		config.getPassword();
+//		LOGGER.info("What is your username?");
+//		config.getUsername();
+//
+//		LOGGER.info("What is your password?");
+//		config.getPassword();
 
 		LOGGER.info("Which entity would you like to use?");
 		Domain.printDomains();

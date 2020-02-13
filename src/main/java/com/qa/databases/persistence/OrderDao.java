@@ -12,7 +12,6 @@ import org.apache.log4j.Logger;
 
 import com.qa.databases.persistence.Order;
 import com.qa.databases.utils.Config;
-import com.qa.databases.utils.Utils;
 
 public class OrderDao implements Dao<Order> {
 	
@@ -91,6 +90,8 @@ public class OrderDao implements Dao<Order> {
 		} catch (Exception e) {
 			LOGGER.error("Failed to edit entry in database", e);
 
+		}finally {
+			
 		}
 
 		return order;

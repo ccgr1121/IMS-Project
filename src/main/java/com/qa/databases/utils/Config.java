@@ -19,6 +19,7 @@ public class Config {
 	private Config() {
 	}
 
+
 	public String getUsername() {
 		return username == null ? username : Utils.getInput();
 	}
