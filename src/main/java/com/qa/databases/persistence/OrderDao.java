@@ -10,7 +10,7 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
-import com.qa.databases.persistence.dao.Item;
+import com.qa.databases.persistence.Order;
 import com.qa.databases.utils.Config;
 import com.qa.databases.utils.Utils;
 
@@ -38,7 +38,7 @@ public class OrderDao implements Dao<Order> {
 			}
 			return orders;
 		} catch (Exception e) {
-			LOGGER.info("Failed to read database", e);
+			LOGGER.error("Failed to read database", e);
 		}return new ArrayList<>();
 	}
 
@@ -49,7 +49,7 @@ public class OrderDao implements Dao<Order> {
 			statement = connection.createStatement();
 			statement.executeUpdate("delete from orders where id = " + id);
 		} catch (Exception e) {
-			LOGGER.info("Failed to delete from database", e);
+			LOGGER.error("Failed to delete from database", e);
 		} finally {
 		}
 
@@ -63,19 +63,67 @@ public class OrderDao implements Dao<Order> {
 	}
 
 	@Override
-	public Order update(Order order) {
-		try (Connection connection = DriverManager.getConnection(Config.getUrl(), Config.getUsername(),
-				Config.getPassword()); Statement statement = connection.createStatement()) {
+	public Order update(long id, Order order) {
+		try (Connection connection = DriverManager.getConnection(Config.url, config.getUsername(), config.getPassword());
+			Statement statement = connection.createStatement()) {
 			Item item = order.getItemList().get(0);
 			statement.executeUpdate(
 					String.format("UPDATE item_order set item_quantity = '%s' WHERE order_id='%s' AND item_id = '%s';",
-							item.getQuantity(), order.getId(), item.getId()));
+							item.getStock(), order.getOrderId(), item.getItemId()));
 			updateCost(order);
 		} catch (Exception e) {
-			Utils.errorPrint(e);
+			LOGGER.error("Failed to edit entry in database", e);
 		}
 		return null;
 	}
+
+
+
+	
+	public Order calcCost(Order order) {
+		try (Connection connection = DriverManager.getConnection(Config.url, config.getUsername(), config.getPassword());
+				Statement statement = connection.createStatement()) {
+				ResultSet resultSet = statement.executeQuery(String.format(
+						"SELECT SUM(item_quantity * sold_cost) from item_order where order_id = %s;", order.getOrderId())); 
+			resultSet.next();
+			order.setCost(resultSet.getDouble(1));
+
+		} catch (Exception e) {
+			LOGGER.error("Failed to edit entry in database", e);
+
+		}
+
+		return order;
+
+	}
+	
+	
+	
+	public Order updateCost(Order order) {
+		try (Connection connection = DriverManager.getConnection(Config.url, config.getUsername(), config.getPassword());
+				Statement statement = connection.createStatement()) {
+			Order orderCost = calcCost(order);
+			if (orderCost.getCost() >= 10000) {
+
+				orderCost.setDiscount(orderCost.getCost() * 0.1);
+				orderCost.setCost(orderCost.getCost() * 0.9);
+
+				statement.executeUpdate(String.format("UPDATE orders SET cost = '%s', discount = '%s' WHERE id='%s';",
+						orderCost.getCost(), orderCost.getDiscount(), orderCost.getOrderId()));
+			}
+
+		} catch (Exception e) {
+			LOGGER.error("Failed to edit entry in database", e);
+		}
+		return null;
+
+	}
+	
+	
+	
+	
+	
+
 
 	// select sum(item_quantity*value) where order_id = item_id
 

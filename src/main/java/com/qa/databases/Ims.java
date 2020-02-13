@@ -17,20 +17,19 @@ import com.qa.databases.services.CustomerServices;
 import com.qa.databases.services.ItemServices;
 import com.qa.databases.services.OrderServices;
 import com.qa.databases.utils.Config;
-import com.qa.databases.utils.Utils;
 
 public class Ims {
 
 	public static final Logger LOGGER = Logger.getLogger(Ims.class);
-	
+	private Config config = Config.getInstance();
 
 	public void imsSystem() throws SQLException {
 
 		LOGGER.info("What is your username?");
-		Config.setUsername(Utils.getInput());
+		config.getUsername();
 
 		LOGGER.info("What is your pass word?");
-		Config.setPassword(Utils.getInput());
+		config.getPassword();
 
 		LOGGER.info("Which entity would you like to use?");
 		Domain.printDomains();
