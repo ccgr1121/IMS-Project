@@ -1,6 +1,6 @@
 package com.qa.databases.persistence;
 
-import java.sql.Connection; 
+import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -14,8 +14,8 @@ import com.qa.databases.utils.Config;
 public class CustomerDao implements Dao<Customer> {
 	public static final Logger LOGGER = Logger.getLogger(CustomerDao.class);
 	private Statement statement = null;
-	
-	private Config config = Config.getInstance();
+
+	Config config = new Config();
 
 	Customer customerFromResultSet(ResultSet resultSet) throws SQLException {
 		Long id = resultSet.getLong("customer_id");
@@ -23,10 +23,10 @@ public class CustomerDao implements Dao<Customer> {
 		String surname = resultSet.getString("lastName");
 		return new Customer(id, firstName, surname);
 	}
- 
+
 	@Override
 	public List<Customer> readAll() {
-		try (Connection connection = DriverManager.getConnection(Config.url, config.getUsername(),
+		try (Connection connection = DriverManager.getConnection(config.url, config.getUsername(),
 				config.getPassword());
 				Statement statement = connection.createStatement();
 				ResultSet resultSet = statement.executeQuery("select * from customer");) {
@@ -42,7 +42,7 @@ public class CustomerDao implements Dao<Customer> {
 	}
 
 	public Customer create(Customer customer) {
-		try (Connection connection = DriverManager.getConnection(Config.url, config.getUsername(),
+		try (Connection connection = DriverManager.getConnection(config.url, config.getUsername(),
 				config.getPassword())) {
 			statement = connection.createStatement();
 			statement.executeUpdate("insert into customer(firstName, lastName) values('" + customer.getFirstName()
@@ -57,7 +57,7 @@ public class CustomerDao implements Dao<Customer> {
 	}
 
 	public Customer update(long id, Customer customer) {
-		try (Connection connection = DriverManager.getConnection(Config.url, config.getUsername(),
+		try (Connection connection = DriverManager.getConnection(config.url, config.getUsername(),
 				config.getPassword())) {
 			statement = connection.createStatement();
 			statement.executeUpdate("update customer set firstName ='" + customer.getFirstName() + "', lastName ='"
@@ -72,8 +72,8 @@ public class CustomerDao implements Dao<Customer> {
 
 	@Override
 	public void delete(long id) {
-		try (Connection connection = DriverManager.getConnection(Config.url, config.getUsername(),
-				config.getPassword() )){
+		try (Connection connection = DriverManager.getConnection(config.url, config.getUsername(),
+				config.getPassword())) {
 			statement = connection.createStatement();
 			statement.executeUpdate("delete from customer where customer_id = " + id);
 		} catch (Exception e) {

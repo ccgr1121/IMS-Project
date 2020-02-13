@@ -15,7 +15,7 @@ import com.qa.databases.utils.Config;
 
 public class OrderDao implements Dao<Order> {
 	
-	private Config config = Config.getInstance();
+	Config config = new Config();
 
 	public static final Logger LOGGER = Logger.getLogger(ItemDao.class);
 	private Statement statement = null;
@@ -28,7 +28,8 @@ public class OrderDao implements Dao<Order> {
 	}
 
 	public List<Order> readAll() {
-		try (Connection connection = DriverManager.getConnection(Config.url, config.getUsername(), config.getPassword());
+		try (Connection connection = DriverManager.getConnection(config.url, config.getUsername(),
+				config.getPassword());
 			Statement statement = connection.createStatement();
 			ResultSet resultSet = statement.executeQuery("select * from orders");){
 			ArrayList<Order> orders = new ArrayList<>();
@@ -44,7 +45,8 @@ public class OrderDao implements Dao<Order> {
 	@Override
 	public void delete(long id) {
 
-		try (Connection connection = DriverManager.getConnection(Config.url, config.getUsername(), config.getPassword())) {
+		try (Connection connection = DriverManager.getConnection(config.url, config.getUsername(),
+				config.getPassword())) {
 			statement = connection.createStatement();
 			statement.executeUpdate("delete from orders where id = " + id);
 		} catch (Exception e) {
@@ -63,7 +65,8 @@ public class OrderDao implements Dao<Order> {
 
 	@Override
 	public Order update(long id, Order order) {
-		try (Connection connection = DriverManager.getConnection(Config.url, config.getUsername(), config.getPassword());
+		try (Connection connection = DriverManager.getConnection(config.url, config.getUsername(),
+				config.getPassword());
 			Statement statement = connection.createStatement()) {
 			Item item = order.getItemList().get(0);
 			statement.executeUpdate(
@@ -80,7 +83,8 @@ public class OrderDao implements Dao<Order> {
 
 	
 	public Order calcCost(Order order) {
-		try (Connection connection = DriverManager.getConnection(Config.url, config.getUsername(), config.getPassword());
+		try (Connection connection = DriverManager.getConnection(config.url, config.getUsername(),
+				config.getPassword());
 				Statement statement = connection.createStatement();
 				ResultSet resultSet = statement.executeQuery(String.format(
 						"SELECT SUM(item_quantity * sold_cost) from item_order where order_id = %s;", order.getOrderId()))) {
@@ -99,8 +103,8 @@ public class OrderDao implements Dao<Order> {
 	
 	
 	public Order updateCost(Order order) {
-		try (Connection connection = DriverManager.getConnection(Config.url, config.getUsername(), config.getPassword());
-				Statement statement = connection.createStatement()) {
+		try (Connection connection = DriverManager.getConnection(config.url, config.getUsername(),
+				config.getPassword())) {
 			Order orderCost = calcCost(order);
 			if (orderCost.getCost() >= 10000) {
 
