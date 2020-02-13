@@ -23,7 +23,6 @@ public class ItemDaoIT {
 
 	@Mock
 	private Config config;
-
 	@Test
 	public void testDatabaseHasValues() {
 		when(config.getUsername()).thenReturn("Tsar_Charlie");

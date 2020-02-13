@@ -11,11 +11,11 @@ public class Config {
 	}
 
 	public String getUsername() {
-		return username == null ? username : Utils.getInput();
+		return username = Utils.getInput();
 	}
 
 	public String getPassword() {
-		return password == null ? password : Utils.getInput();
+		return password = Utils.getInput();
 	}
 
 }

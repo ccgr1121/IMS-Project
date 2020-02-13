@@ -10,40 +10,31 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 import com.qa.databases.utils.Config;
-import com.qa.databases.utils.Utils;
 
 public class OrderDao implements Dao<Order> {
 
 	public static final Logger LOGGER = Logger.getLogger(ItemDao.class);
 	private Statement statement = null;
-	private ResultSet resultSet = null;
-
 
 	Order orderFromResultSet(ResultSet resultSet) throws SQLException {
-		long id = resultSet.getLong("id");
-		long fkCustomerId = resultSet.getLong("fkCustomerId");
-		long fkItemId = resultSet.getLong("fkItemId");
-		int quantity = resultSet.getInt("quantity");
-		double value = resultSet.getDouble("value");
-		return new Order(id, fkCustomerId, fkItemId, quantity, value);
+		long id = resultSet.getLong("orders_id");
+		long fkCustomerId = resultSet.getLong("fk_Customer_Id");
+		double cost = resultSet.getDouble("cost");
+		return new Order(id, fkCustomerId, cost);
 	}
- 
-	public List<Order> readAll() { 
-		String result = "failed";
+
+	public List<Order> readAll() {
 		try (Connection connection = DriverManager.getConnection(Config.url, Config.username, Config.password)) {
 			statement = connection.createStatement();
-			resultSet = statement.executeQuery("select * from orders");
+			ResultSet resultSet = statement.executeQuery("select * from orders");
 			ArrayList<Order> orders = new ArrayList<>();
 			while (resultSet.next()) {
 				orders.add(orderFromResultSet(resultSet));
 			}
+			return orders;
 		} catch (Exception e) {
-			result = "exception fail";
 			LOGGER.info("Failed to read database", e);
-		} finally {
-			Utils.close(statement, resultSet);
-		}
-		return new ArrayList<>();
+		}return new ArrayList<>();
 	}
 
 	@Override
@@ -55,7 +46,6 @@ public class OrderDao implements Dao<Order> {
 		} catch (Exception e) {
 			LOGGER.info("Failed to delete from database", e);
 		} finally {
-			Utils.close(statement, resultSet);
 		}
 
 	}

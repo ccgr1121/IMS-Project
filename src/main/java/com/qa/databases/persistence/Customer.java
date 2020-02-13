@@ -35,7 +35,7 @@ public class Customer {
 		this.firstName = firstName;
 	}
 
-	public String getSurname() {
+	public String getSurname() { 
 		return surname;
 	}
 

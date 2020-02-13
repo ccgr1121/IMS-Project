@@ -4,22 +4,16 @@ public class Order {
 
 	private long orderId;
 	private long fkCustomerId;
-	private long fkItemId;
-	private int quantity;
 	private double cost;
 
-	public Order(long orderId, long fkCustomerId, long fkItemId, int quantity, double cost) {
+	public Order(long orderId, long fkCustomerId, double cost) {
 		this.orderId = orderId;
 		this.fkCustomerId = fkCustomerId;
-		this.fkItemId = fkItemId;
-		this.quantity = quantity;
 		this.cost = cost;
 	}
 
-	public Order(long fkCustomerId, long fkItemId, int quantity, double cost) {
+	public Order(long fkCustomerId, double cost) {
 		this.fkCustomerId = fkCustomerId;
-		this.fkItemId = fkItemId;
-		this.quantity = quantity;
 		this.cost = cost;
 	}
 
@@ -39,28 +33,18 @@ public class Order {
 		this.fkCustomerId = fkCustomerId;
 	}
 
-	public long getFkItemId() {
-		return fkItemId;
-	}
-
-	public void setFkItemId(long fkItemId) {
-		this.fkItemId = fkItemId;
-	}
-
-	public int getQuantity() {
-		return quantity;
-	}
-
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
-	}
-
 	public double getCost() {
 		return cost;
 	}
 
 	public void setCost(double cost) {
 		this.cost = cost;
+	} 
+
+	public String toString() {
+		return "orders_id:" + orderId + ", fk_customer_id:" + fkCustomerId + ", cost:" + cost;
 	}
 
+	
+	
 }

@@ -22,7 +22,7 @@ public class OrderController implements CrudController<Order> {
 		this.orderService = orderService;
 	}
 
-	String getInput() {
+	String getInput() { 
 		return Utils.getInput();
 	}
 	/**
