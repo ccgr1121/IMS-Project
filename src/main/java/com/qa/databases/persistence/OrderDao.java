@@ -81,17 +81,15 @@ public class OrderDao implements Dao<Order> {
 	
 	public Order calcCost(Order order) {
 		try (Connection connection = DriverManager.getConnection(Config.url, config.getUsername(), config.getPassword());
-				Statement statement = connection.createStatement()) {
+				Statement statement = connection.createStatement();
 				ResultSet resultSet = statement.executeQuery(String.format(
-						"SELECT SUM(item_quantity * sold_cost) from item_order where order_id = %s;", order.getOrderId())); 
+						"SELECT SUM(item_quantity * sold_cost) from item_order where order_id = %s;", order.getOrderId()))) {
 			resultSet.next();
 			order.setCost(resultSet.getDouble(1));
 
 		} catch (Exception e) {
 			LOGGER.error("Failed to edit entry in database", e);
 
-		}finally {
-			
 		}
 
 		return order;
