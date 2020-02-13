@@ -12,7 +12,7 @@ and pass that through to SonarQube, which tested the code for bugs and other cod
 When the quality gates on SonarQube were achieved, a snapshot of the code is pushed to the Nexus remote repository.
 
 
-Test analysis is currently at 52%.
+Test coverage is currently at 52% according to SonarQube. This includes Mockito testing, as well as Integration testing.
 
 ## Getting Started
 
@@ -28,20 +28,20 @@ Test analysis is currently at 52%.
 
 *A [Jenkins](https://jenkins.io/download/) CI server needs to be utilised for the automatic building of .jar files.
 
-*The software will run through [Sonarqube](https://www.sonarqube.org/downloads/) for testing purposes.
+*The software will run through [SonarQube](https://www.sonarqube.org/downloads/) for testing purposes.
 
 *The software will deploy to [Nexus](https://www.sonatype.com/download-nexus-repository-trial?hsCtaTracking=387944e4-949c-403c-a489-bd67e7c31a2a%7Ca59637d2-4904-4eb5-9a0b-5d380c65bf51).
 
-*You will also need to deploy maven and java to your local development environment. Instructions for maven can be found [here](https://tutorials.visualstudio.com/Java/hello-world/install-maven), whilst instrictions for Java can be found [here](https://www.javatpoint.com/how-to-set-path-in-java).
+*You will also need to deploy maven and java to your local development environment. Instructions for maven can be found [here](https://tutorials.visualstudio.com/Java/hello-world/install-maven), whilst instructions for Java can be found [here](https://www.javatpoint.com/how-to-set-path-in-java).
 
 ### Installing
 
 To install this program, start by pulling the source folder and the pom.xml file from my Github. You will then need to change the
-SonarQube, Nexus and jenkins ip address to your own ones.
+SonarQube, Nexus and Jenkins ip address to your own ones.
 
 ### Deploying
 
-To use this in an industrial environment, it is recomended to use either a local hosted database, or a cloud hosted database.
+To use this in an industrial environment, it is recommended to use either a local hosted database, or a cloud hosted database.
 Currently, the url has been hardcoded in, but can be changed easily in the Utils.config class to access any other address.
 
 ### Executing program
@@ -56,7 +56,7 @@ Currently, the url has been hardcoded in, but can be changed easily in the Utils
 
 ### Walkthrough
 If I wanted to add a new customer to the database, I would first press Ctrl+F11 to run the software.
-I would then enter in the word "customer" to tell the software to interact with the customer , and
+I would then enter in the word "customer" to tell the software to interact with the customer, and
 the word "create" to tell the software that I wish to create a new entry.
 
 Once I have done this, I would type in the first name of the new customer, followed by the last name.
@@ -75,20 +75,20 @@ This will run a series of tests to ensure that your code not only compiles, but 
 The easiest way to do this is to use Jenkins, or a similar CI Server. When creating a new Jenkins project,
 ensure that your Github repository is set in the configuration stage, and include 'mvn test' in the Build Execute Shell.
 
-Underneath, you should include a reference to your sonarqube, which will test your code for bugs, vulnerabilities and
+Underneath, you should include a reference to your SonarQube, which will test your code for bugs, vulnerabilities and
 general mess. As of this build, the software is of a good quality, though any further changes made by the user
 will need to be verified by the software. To achieve all this, simply add the following underneath:
 ```
-mvn sonar:sonar -Dsonar.host.url=<your sonarqube url> -Dsonar.login=<your sonarqube login> -Dsonar.password=<your sonarqube password>  
+mvn sonar:sonar -Dsonar.host.url=<your sonarqube url> -Dsonar.login=<your SonarQube login> -Dsonar.password=<your SonarQube password>  
 ```
-This will allow you to investigate anything that is flagged up by Sonarqube.
+This will allow you to investigate anything that is flagged up by SonarQube.
 
 Lastly, you should run the command
 ```
 mvn deploy
 ```
 
-This will deploy the new .jar file to your nexus repository, which you will have defined in your pom.xml during the installation.
+This will deploy the new .jar file to your Nexus repository, which you will have defined in your pom.xml during the installation.
 
 
 ## Help
@@ -110,7 +110,7 @@ CharlieReddin@academytrainee.com
 
 ## Acknowledgments
 
-Chris, Rhys, and the whole trainer team at QA, who have been invaluable in their assisstence, dedication and generosity.
+Chris, Rhys, and the whole trainer team at QA, who have been invaluable in their assistance, dedication and generosity.
 Raf, Sam, Juamal and Tyler, who have 
 Elliott Dorrington - Large contributions to the Risk Assessment.
 My classmates, who have been supportive and kind as we all approached D-Day.
