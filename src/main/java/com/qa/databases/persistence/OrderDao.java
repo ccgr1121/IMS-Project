@@ -17,7 +17,6 @@ public class OrderDao implements Dao<Order> {
 	public static final Logger LOGGER = Logger.getLogger(ItemDao.class);
 	private Statement statement = null;
 	private ResultSet resultSet = null;
-	private Config config = Config.getInstance();
 
 
 	Order orderFromResultSet(ResultSet resultSet) throws SQLException {
@@ -31,7 +30,7 @@ public class OrderDao implements Dao<Order> {
  
 	public List<Order> readAll() { 
 		String result = "failed";
-		try (Connection connection = DriverManager.getConnection(Config.url, config.getUsername(), config.getPassword())) {
+		try (Connection connection = DriverManager.getConnection(Config.url, Config.username, Config.password)) {
 			statement = connection.createStatement();
 			resultSet = statement.executeQuery("select * from orders");
 			ArrayList<Order> orders = new ArrayList<>();
@@ -50,7 +49,7 @@ public class OrderDao implements Dao<Order> {
 	@Override
 	public void delete(long id) {
 
-		try (Connection connection = DriverManager.getConnection(Config.url, config.getUsername(), config.getPassword())) {
+		try (Connection connection = DriverManager.getConnection(Config.url, Config.username, Config.password)) {
 			statement = connection.createStatement();
 			statement.executeUpdate("delete from orders where id = " + id);
 		} catch (Exception e) {
