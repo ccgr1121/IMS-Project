@@ -138,9 +138,4 @@ public class ItemTest {
 		assertEquals(item.hashCode(), other.hashCode());
 	}
 
-	@Test
-	public void toStringTest() {
-		String toString = "com.qa.databases.persistence.Item@10faa22e";
-		assertEquals(toString, item.toString());
-	}
 }

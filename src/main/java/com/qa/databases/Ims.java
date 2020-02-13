@@ -17,17 +17,17 @@ import com.qa.databases.services.OrderServices;
 import com.qa.databases.utils.Config;
 import com.qa.databases.utils.Utils;
 public class Ims {
-
+	Config config = new Config();
 	public static final Logger LOGGER = Logger.getLogger(Ims.class);
 
 	public void imsSystem() {
-//		LOGGER.info("What is your username");
-//		Config.setUsername(Utils.getInput());
-//		LOGGER.info("What is your password");
-//		Config.setPassword(Utils.getInput());
+		LOGGER.info("What is your username");
+		config.setUsername(Utils.getInput());
+		LOGGER.info("What is your password");
+		config.setPassword(Utils.getInput());
 		boolean exit = true;
 		while (exit) {
-
+ 
 			LOGGER.info("Which entity would you like to use?");
 			Domain.printDomains();
 

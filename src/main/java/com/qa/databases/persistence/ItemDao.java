@@ -16,6 +16,7 @@ import com.qa.databases.utils.Config;
 public class ItemDao implements Dao<Item> {
 	public static final Logger LOGGER = Logger.getLogger(ItemDao.class);
 	private Statement statement = null;
+	Config config = new Config();
  
 	Item itemFromResultSet(ResultSet resultSet) throws SQLException {
 		Long id = resultSet.getLong("item_id");
@@ -26,8 +27,8 @@ public class ItemDao implements Dao<Item> {
 	}
  
 	public List<Item> readAll() {
-		try (Connection connection = DriverManager.getConnection(Config.url, Config.getUsername(),
-				Config.getPassword());
+		try (Connection connection = DriverManager.getConnection(Config.url, config.getUsername(),
+				config.getPassword());
 			Statement statement = connection.createStatement();
 			ResultSet resultSet = statement.executeQuery("select * from item");){
 			ArrayList<Item> items = new ArrayList<>();
@@ -42,8 +43,8 @@ public class ItemDao implements Dao<Item> {
 	}
 
 	public Item create(Item item) {
-		try (Connection connection = DriverManager.getConnection(Config.url, Config.getUsername(),
-				Config.getPassword())) {
+		try (Connection connection = DriverManager.getConnection(Config.url, config.getUsername(),
+				config.getPassword())) {
 			statement = connection.createStatement();
 			statement.executeUpdate("INSERT INTO item(name, value, stock) VALUES ( \'" + item.getName() + "\', \'"
 					+ item.getValue() + "\', \'" + item.getStock() + "\' );");
@@ -55,8 +56,8 @@ public class ItemDao implements Dao<Item> {
 	}
 
 	public Item update(long id, Item item) {
-		try (Connection connection = DriverManager.getConnection(Config.url, Config.getUsername(),
-				Config.getPassword())) {
+		try (Connection connection = DriverManager.getConnection(Config.url, config.getUsername(),
+				config.getPassword())) {
 			statement = connection.createStatement();
 			statement.executeUpdate("update item set name = '" + item.getName() + "', value = '" + item.getValue()
 					+ "', stock = '" + item.getStock() + "' WHERE item_id = '" + id + "';");
@@ -71,8 +72,8 @@ public class ItemDao implements Dao<Item> {
 	@Override
 	public void delete(long id) {
 
-		try (Connection connection = DriverManager.getConnection(Config.url, Config.getUsername(),
-				Config.getPassword())) {
+		try (Connection connection = DriverManager.getConnection(Config.url, config.getUsername(),
+				config.getPassword())) {
 			statement = connection.createStatement();
 			statement.executeUpdate("delete from item where item_id = " + id);
 		} catch (Exception e) {

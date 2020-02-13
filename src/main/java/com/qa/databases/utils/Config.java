@@ -4,31 +4,30 @@ public class Config {
 	/**
 	 * @author Charlie
 	 */
-	private static String username = "Tsar_Charlie";
-	
+	private String username;
 
-
-	private static String password = "Skippy101!";
+	private String password;
 	public static String url = "jdbc:mysql://34.89.101.76:3306/IMS";
 
-	private Config() {
+	public Config() {
 
 	}
 
-	public static String getUsername() {
+	public String getUsername() {
 		return username;
 	}
-	
-	public static String getPassword() {
+
+	public String getPassword() {
 		return password;
 	}
-	public static void setUsername(String username) {
-		Config.username = username;
+
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
-	public static void setPassword(String password) {
-		Config.password = password;
-		
+	public void setPassword(String password) {
+		this.password = password;
+
 	}
 
 }
