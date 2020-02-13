@@ -6,16 +6,18 @@ public class Customer {
 	private String firstName;
 	private String surname;
 
-	public Customer(String firstName, String surname) {
-		this.firstName = firstName;
-		this.surname = surname;
-	}
-
 	public Customer(Long id, String firstName, String surname) {
 		this.id = id;
 		this.firstName = firstName;
 		this.surname = surname;
 	}
+	
+	public Customer(String firstName, String surname) {
+		this.firstName = firstName;
+		this.surname = surname;
+	}
+
+	
 
 	public Long getId() {
 		return id;

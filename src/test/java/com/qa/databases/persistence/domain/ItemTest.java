@@ -54,7 +54,7 @@ public class ItemTest {
 	public void createItemWithId() {
 		assertEquals(1L, item.getItemId(), 0);
 		assertEquals("apple", item.getName());
-		assertEquals(20, item.getValue());
+		assertEquals(20D, item.getValue());
 		assertEquals(12, item.getStock());
 	}
 
@@ -121,13 +121,13 @@ public class ItemTest {
 
 	@Test
 	public void otherSurnameDifferent() {
-		other.setValue(30);
+		other.setValue(30D);
 		assertFalse(item.equals(other));
 	}
 
 	@Test
 	public void constructorWithoutItemId() {
-		Item item = new Item("apple", 21, 12);
+		Item item = new Item("apple", 21D, 12);
 		assertNull(item.getItemId());
 		assertNotNull(item.getName());
 		assertNotNull(item.getValue());
@@ -141,8 +141,8 @@ public class ItemTest {
 
 	@Test
 	public void hashCodeTestWithNull() {
-		Item item = new Item(null, null);
-		Item other = new Item(null, null);
+		Item item = new Item("null", null, null);
+		Item other = new Item("null", null, null);
 		assertEquals(item.hashCode(), other.hashCode());
 	}
 

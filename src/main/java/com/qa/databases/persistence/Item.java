@@ -2,29 +2,29 @@ package com.qa.databases.persistence;
 
 public class Item {
 
-	private long itemId;
+	private Long itemId;
 	private String name;
-	private double value; 
+	private double value;
 	private int stock;
 
-	public Item(long itemId, String name, double value, int stock) {
+	public Item(Long itemId, String name, Double value, Integer stock) {
 		this.itemId = itemId;
 		this.name = name;
 		this.value = value;
-		this.stock = stock;		
-	}
-	
-	public Item(String name, double value, int stock) {
-		this.name = name;
-		this.value = value;
-		this.stock = stock;	
+		this.stock = stock;
 	}
 
-	public long getItemId() {
+	public Item(String name, Double value, Integer stock) {
+		this.name = name;
+		this.value = value;
+		this.stock = stock;
+	}
+
+	public Long getItemId() {
 		return itemId;
 	}
 
-	public void setItemId(long itemId) {
+	public void setItemId(Long itemId) {
 		this.itemId = itemId;
 	}
 
@@ -36,19 +36,19 @@ public class Item {
 		this.name = name;
 	}
 
-	public double getValue() {
+	public Double getValue() {
 		return value;
 	}
 
-	public void setValue(double value) {
+	public void setValue(Double value) {
 		this.value = value;
 	}
 
-	public int getStock() {
+	public Integer getStock() {
 		return stock;
 	}
 
-	public void setStock(int stock) {
+	public void setStock(Integer stock) {
 		this.stock = stock;
 	}
 
@@ -88,7 +88,4 @@ public class Item {
 		return true;
 	}
 
-
-	
-	
 }
