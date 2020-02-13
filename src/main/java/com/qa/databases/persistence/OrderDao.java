@@ -24,7 +24,7 @@ public class OrderDao implements Dao<Order> {
 	}
 
 	public List<Order> readAll() {
-		try (Connection connection = DriverManager.getConnection(Config.url, Config.username, Config.password);
+		try (Connection connection = DriverManager.getConnection(Config.url, Config.getUsername(), Config.getPassword());
 			Statement statement = connection.createStatement();
 			ResultSet resultSet = statement.executeQuery("select * from orders");){
 			ArrayList<Order> orders = new ArrayList<>();
@@ -40,7 +40,7 @@ public class OrderDao implements Dao<Order> {
 	@Override
 	public void delete(long id) {
 
-		try (Connection connection = DriverManager.getConnection(Config.url, Config.username, Config.password)) {
+		try (Connection connection = DriverManager.getConnection(Config.url, Config.getUsername(), Config.getPassword())) {
 			statement = connection.createStatement();
 			statement.executeUpdate("delete from orders where id = " + id);
 		} catch (Exception e) {

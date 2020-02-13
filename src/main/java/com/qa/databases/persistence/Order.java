@@ -2,47 +2,80 @@ package com.qa.databases.persistence;
 
 public class Order {
 
-	private long orderId;
-	private long fkCustomerId;
-	private double cost;
+	private Long orderId;
+	private Long fkCustomerId;
+	private Double cost;
 
-	public Order(long orderId, long fkCustomerId, double cost) {
+	public Order(Long orderId, Long fkCustomerId, Double cost) {
 		this.orderId = orderId;
 		this.fkCustomerId = fkCustomerId;
 		this.cost = cost;
 	}
 
-	public Order(long fkCustomerId, double cost) {
+	public Order(Long fkCustomerId, Double cost) {
 		this.fkCustomerId = fkCustomerId;
 		this.cost = cost;
 	}
 
-	public long getOrderId() {
+	public Long getOrderId() {
 		return orderId;
 	}
 
-	public void setOrderId(long orderId) {
+	public void setOrderId(Long orderId) {
 		this.orderId = orderId;
 	}
 
-	public long getFkCustomerId() {
+	public Long getFkCustomerId() {
 		return fkCustomerId;
 	}
 
-	public void setFkCustomerId(long fkCustomerId) {
+	public void setFkCustomerId(Long fkCustomerId) {
 		this.fkCustomerId = fkCustomerId;
 	}
 
-	public double getCost() {
+	public Double getCost() {
 		return cost;
 	}
 
-	public void setCost(double cost) {
+	public void setCost(Double cost) {
 		this.cost = cost;
 	} 
 
-	public String toString() {
-		return "orders_id:" + orderId + ", fk_customer_id:" + fkCustomerId + ", cost:" + cost;
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((cost == null) ? 0 : cost.hashCode());
+		result = prime * result + ((fkCustomerId == null) ? 0 : fkCustomerId.hashCode());
+		result = prime * result + ((orderId == null) ? 0 : orderId.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Order other = (Order) obj;
+		if (cost == null) {
+			if (other.cost != null)
+				return false;
+		} else if (!cost.equals(other.cost))
+			return false;
+		if (fkCustomerId == null) {
+			if (other.fkCustomerId != null)
+				return false;
+		} else if (!fkCustomerId.equals(other.fkCustomerId))
+			return false;
+		if (orderId == null) {
+			if (other.orderId != null)
+				return false;
+		} else if (!orderId.equals(other.orderId))
+			return false;
+		return true;
 	}
 
 	

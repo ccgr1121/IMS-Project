@@ -24,8 +24,8 @@ public class CustomerDao implements Dao<Customer> {
  
 	@Override
 	public List<Customer> readAll() {
-		try (Connection connection = DriverManager.getConnection(Config.url, Config.username,
-				Config.password);
+		try (Connection connection = DriverManager.getConnection(Config.url, Config.getUsername(),
+				Config.getPassword());
 				Statement statement = connection.createStatement();
 				ResultSet resultSet = statement.executeQuery("select * from customer");) {
 			ArrayList<Customer> customers = new ArrayList<>();
@@ -40,8 +40,8 @@ public class CustomerDao implements Dao<Customer> {
 	}
 
 	public Customer create(Customer customer) {
-		try (Connection connection = DriverManager.getConnection(Config.url, Config.username,
-				Config.password)) {
+		try (Connection connection = DriverManager.getConnection(Config.url, Config.getUsername(),
+				Config.getPassword())) {
 			statement = connection.createStatement();
 			statement.executeUpdate("insert into customer(firstName, lastName) values('" + customer.getFirstName()
 					+ "','" + customer.getSurname() + "')");
@@ -55,8 +55,8 @@ public class CustomerDao implements Dao<Customer> {
 	}
 
 	public Customer update(long id, Customer customer) {
-		try (Connection connection = DriverManager.getConnection(Config.url, Config.username,
-				Config.password)) {
+		try (Connection connection = DriverManager.getConnection(Config.url, Config.getUsername(),
+				Config.getPassword())) {
 			statement = connection.createStatement();
 			statement.executeUpdate("update customer set firstName ='" + customer.getFirstName() + "', lastName ='"
 					+ customer.getSurname() + "' where customer_id =" + customer.getId());
@@ -70,8 +70,8 @@ public class CustomerDao implements Dao<Customer> {
 
 	@Override
 	public void delete(long id) {
-		try (Connection connection = DriverManager.getConnection(Config.url, Config.username,
-				Config.password)) {
+		try (Connection connection = DriverManager.getConnection(Config.url, Config.getUsername(),
+				Config.getPassword() )){
 			statement = connection.createStatement();
 			statement.executeUpdate("delete from customer where customer_id = " + id);
 		} catch (Exception e) {
