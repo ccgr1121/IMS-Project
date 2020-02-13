@@ -22,7 +22,7 @@ public class ItemController implements CrudController<Item> {
 	}
 
 	String getInput() {
-		return Utils.getInput();
+		return Utils.getInput(); 
 	}  
 
 	/**
@@ -54,7 +54,7 @@ public class ItemController implements CrudController<Item> {
 		Double value = Double.parseDouble(stringValue);
 		LOGGER.info("Please enter the stock level:");
 		String stockString = getInput();
-		int stock = Integer.parseInt(stockString);
+		Integer stock = Integer.parseInt(stockString);
 		Item item = itemService.create(new Item(name, value, stock));
 		LOGGER.info("Item created");
 		return item;
@@ -85,7 +85,7 @@ public class ItemController implements CrudController<Item> {
 	}
  
 	/**
-	 * Deletes an existing customer by the id of the customer
+	 * Deletes an existing item by the id of the item.
 	 */
 
 	@Override

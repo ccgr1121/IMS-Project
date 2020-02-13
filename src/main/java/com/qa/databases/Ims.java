@@ -27,7 +27,7 @@ public class Ims {
 	public void imsSystem() throws SQLException {
 
 		LOGGER.info("What is your username?");
-		config.getUsername();
+		config.getUsername(); 
 
 		LOGGER.info("What is your password?");
 		config.getPassword();

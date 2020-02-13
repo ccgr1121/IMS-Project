@@ -20,7 +20,7 @@ public class CustomerControllerTest {
  
 	/**
 	 * The thing I want to fake functionlity for
-	 */
+	 */ 
 	@Mock
 	private CustomerServices customerServices;
 

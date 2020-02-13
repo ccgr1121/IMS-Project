@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.log4j.Logger;
-
 import com.qa.databases.utils.Config;
 
 public class CustomerDao implements Dao<Customer> {
@@ -24,7 +23,7 @@ public class CustomerDao implements Dao<Customer> {
 		String surname = resultSet.getString("lastName");
 		return new Customer(id, firstName, surname);
 	}
-
+ 
 	@Override
 	public List<Customer> readAll() {
 		try (Connection connection = DriverManager.getConnection(Config.url, config.getUsername(),

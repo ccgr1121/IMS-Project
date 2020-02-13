@@ -12,10 +12,9 @@ import org.apache.log4j.Logger;
 import com.qa.databases.utils.Config;
 
 public class ItemDao implements Dao<Item> {
-
 	public static final Logger LOGGER = Logger.getLogger(ItemDao.class);
 	private Statement statement = null;
-	private ResultSet resultSet = null;
+
 	private Config config = Config.getInstance();
 
 	Item itemFromResultSet(ResultSet resultSet) throws SQLException {
@@ -27,22 +26,24 @@ public class ItemDao implements Dao<Item> {
 	}
  
 	public List<Item> readAll() {
-		try (Connection connection = DriverManager.getConnection(Config.url, config.getUsername(), config.getPassword())) {
+		try (Connection connection = DriverManager.getConnection(Config.url, config.getUsername(),
+				config.getPassword())) {
 			statement = connection.createStatement();
-			resultSet = statement.executeQuery("select * from item");
+			ResultSet resultSet = statement.executeQuery("select * from item");
 			ArrayList<Item> items = new ArrayList<>();
 			while (resultSet.next()) {
 				items.add(itemFromResultSet(resultSet));
 			}
+			return items;
 		} catch (Exception e) {
 			LOGGER.info("Failed to read database", e);
-		} finally {
 		}
 		return new ArrayList<>();
 	}
 
 	public Item create(Item item) {
-		try (Connection connection = DriverManager.getConnection(Config.url, config.getUsername(), config.getPassword())) {
+		try (Connection connection = DriverManager.getConnection(Config.url, config.getUsername(),
+				config.getPassword())) {
 			statement = connection.createStatement();
 			statement.executeUpdate("INSERT INTO item(name, value, stock) VALUES ( \'" + item.getName() + "\', \'"
 					+ item.getValue() + "\', \'" + item.getStock() + "\' );");
@@ -54,7 +55,8 @@ public class ItemDao implements Dao<Item> {
 	}
 
 	public Item update(long id, Item item) {
-		try (Connection connection = DriverManager.getConnection(Config.url, config.getUsername(), config.getPassword())) {
+		try (Connection connection = DriverManager.getConnection(Config.url, config.getUsername(),
+				config.getPassword())) {
 			statement = connection.createStatement();
 			statement.executeUpdate("update item set name = '" + item.getName() + "', value = '" + item.getValue()
 					+ "', stock = '" + item.getStock() + "' WHERE item_id = '" + id + "';");
@@ -63,13 +65,14 @@ public class ItemDao implements Dao<Item> {
 		} finally {
 		}
 		return item;
-
+ 
 	}
 
 	@Override
 	public void delete(long id) {
 
-		try (Connection connection = DriverManager.getConnection(Config.url, config.getUsername(), config.getPassword())) {
+		try (Connection connection = DriverManager.getConnection(Config.url, config.getUsername(),
+				config.getPassword())) {
 			statement = connection.createStatement();
 			statement.executeUpdate("delete from item where item_id = " + id);
 		} catch (Exception e) {

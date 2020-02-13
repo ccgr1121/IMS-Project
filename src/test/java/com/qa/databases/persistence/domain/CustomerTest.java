@@ -21,7 +21,7 @@ public class CustomerTest {
 		customer = new Customer(1L, "Chris", "Perrins");
 		other = new Customer(1L, "Chris", "Perrins");
 	}
-	
+	 
 	@Test
 	public void settersTest() {
 		assertNotNull(customer.getId());
@@ -91,7 +91,7 @@ public class CustomerTest {
 	
 	@Test
 	public void nullIdOnBoth() {
-		customer.setId(null);
+		customer.setId(null); 
 		other.setId(null);
 		assertTrue(customer.equals(other));
 	}

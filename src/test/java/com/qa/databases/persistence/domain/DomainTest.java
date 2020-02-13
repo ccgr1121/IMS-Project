@@ -19,7 +19,7 @@ public class DomainTest {
 		Domain domain = Domain.ITEM;
 		assertTrue(domain.getDescription().toLowerCase().contains("item"));
 	}
-	
+	 
 	@Test
 	public void orderTest() {
 		Domain domain = Domain.ORDER;

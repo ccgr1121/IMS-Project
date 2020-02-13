@@ -4,15 +4,15 @@ public class Item {
 
 	private Long itemId;
 	private String name;
-	private double value;
-	private int stock;
+	private Double value;
+	private Integer stock;
 
 	public Item(Long itemId, String name, Double value, Integer stock) {
 		this.itemId = itemId;
-		this.name = name;
+		this.name = name; 
 		this.value = value;
 		this.stock = stock;
-	}
+	}  
 
 	public Item(String name, Double value, Integer stock) {
 		this.name = name;
@@ -31,7 +31,7 @@ public class Item {
 	public String getName() {
 		return name;
 	}
-
+ 
 	public void setName(String name) {
 		this.name = name;
 	}
@@ -42,7 +42,7 @@ public class Item {
 
 	public void setValue(Double value) {
 		this.value = value;
-	}
+	} 
 
 	public Integer getStock() {
 		return stock;
@@ -59,7 +59,7 @@ public class Item {
 		result = prime * result + (int) (itemId ^ (itemId >>> 32));
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + stock;
-		long temp;
+		Long temp;
 		temp = Double.doubleToLongBits(value);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
 		return result;

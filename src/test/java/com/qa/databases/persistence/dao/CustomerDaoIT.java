@@ -30,5 +30,6 @@ public class CustomerDaoIT {
 		when(config.getPassword()).thenReturn("Skippy101!");
 		List<Customer> customers = dao.readAll();
 		assertTrue(customers.size() > 0);
-	}
+	} 
 }
+   

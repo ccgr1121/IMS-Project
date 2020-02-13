@@ -18,7 +18,7 @@ import com.qa.databases.services.ItemServices;
 @RunWith(MockitoJUnitRunner.class)
 public class ItemControllerTest {
 
-	/** 
+	/**  
 	 * The thing I want to fake functionlity for
 	 */
 	@Mock
@@ -43,7 +43,7 @@ public class ItemControllerTest {
 		double value = Double.parseDouble(stringValue);
 		int stock = Integer.parseInt(stringStock);
 		Item item = new Item(name, value, stock);
-		Item setUpItem4 = new Item(4L, "dandelion", 40, 40);
+		Item setUpItem4 = new Item(4L, "dandelion", 40D, 40);
 		Mockito.when(itemServices.create(item)).thenReturn(setUpItem4);
 		assertEquals(setUpItem4, itemController.create());
 	}
@@ -53,7 +53,7 @@ public class ItemControllerTest {
 
 		ItemController itemController = new ItemController(itemServices);
 		List<Item> items = new ArrayList<>();
-		items.add(new Item(1, "apple", 10, 10));
+		items.add(new Item(1L, "apple", 10D, 10));
 		Mockito.when(itemServices.readAll()).thenReturn(items);
 		assertEquals(items, itemController.readAll());
 	}
@@ -63,14 +63,14 @@ public class ItemControllerTest {
 	 */
 	@Test
 	public void updateTest() { 
-		Item item = new Item("apple", 10, 10);
+		Item item = new Item("apple", 10D, 10);
 		String stringId = "1";
 		String name = "apple";
 		String stringValue = "10";
 		String stringStock = "10";
 		Mockito.doReturn(stringId, name, stringValue, stringStock).when(itemController).getInput();
 
-		Item returnedItem = new Item(1, name, 10, 10);
+		Item returnedItem = new Item(1L, name, 10D, 10);
 		
 		Mockito.when(itemServices.update(1L, item)).thenReturn(returnedItem);
 		assertEquals(returnedItem, itemController.update());
