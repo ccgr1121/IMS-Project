@@ -10,7 +10,7 @@ public class Item {
 	public Item(Long itemId, String name, Double value, Integer stock) {
 		this.itemId = itemId;
 		this.name = name; 
-		this.value = value;
+		this.value = value; 
 		this.stock = stock;
 	}  
 

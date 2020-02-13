@@ -18,11 +18,11 @@ public class ItemDao implements Dao<Item> {
 	private Config config = Config.getInstance();
  
 	Item itemFromResultSet(ResultSet resultSet) throws SQLException {
-		Long id = resultSet.getLong("id");
+		Long id = resultSet.getLong("item_id");
 		String name = resultSet.getString("name");
-		double value = resultSet.getDouble("value");
-		int stock = resultSet.getInt("stock");
-		return new Item(id, name, value, stock);
+		Double value = resultSet.getDouble("value");
+		Integer stock = resultSet.getInt("stock");
+		return new Item(id, name, value, stock); 
 	}
  
 	public List<Item> readAll() {

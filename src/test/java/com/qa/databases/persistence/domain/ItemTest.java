@@ -18,7 +18,7 @@ public class ItemTest {
 
 	@Before
 	public void setUp() {
-		item = new Item(1L, "apple", 20D, 12); 
+		item = new Item(1L, "apple", 20D, 12);
 		other = new Item(1L, "apple", 20D, 12);
 	}
 
@@ -27,7 +27,7 @@ public class ItemTest {
 		assertNotNull(item.getItemId());
 		assertNotNull(item.getName());
 		assertNotNull(item.getValue());
-		assertNotNull(item.getStock()); 
+		assertNotNull(item.getStock());
 
 		item.setItemId(null);
 		assertNull(item.getItemId());
@@ -37,13 +37,13 @@ public class ItemTest {
 		assertNull(item.getValue());
 		item.setStock(null);
 		assertNull(item.getStock());
- 
+
 	}
 
 	@Test
 	public void equalsWithNull() {
 		assertFalse(item.equals(null));
-	}  
+	}
 
 	@Test
 	public void equalsWithDifferentObject() {
@@ -107,34 +107,14 @@ public class ItemTest {
 	}
 
 	@Test
-	public void nullValue() { 
-		item.setValue(null);
-		assertFalse(item.equals(other));
-	} 
-
-	@Test
-	public void nullValueOnBoth() {
-		item.setValue(null);
-		other.setValue(null);
-		assertFalse(item.equals(other));
-	}
-
-	@Test
 	public void otherValueDifferent() {
 		other.setValue(30D);
 		assertFalse(item.equals(other));
 	}
-	
-	@Test
-	public void nullStock() { 
-		item.setStock(null);
-		assertFalse(item.equals(other));
-	} 
 
 	@Test
-	public void nullStockOnBoth() {
+	public void nullStock() {
 		item.setStock(null);
-		other.setStock(null);
 		assertFalse(item.equals(other));
 	}
 
@@ -143,9 +123,6 @@ public class ItemTest {
 		other.setStock(2);
 		assertFalse(item.equals(other));
 	}
-	
-	
-	
 
 	@Test
 	public void constructorWithoutItemId() {
@@ -158,13 +135,6 @@ public class ItemTest {
 
 	@Test
 	public void hashCodeTest() {
-		assertEquals(item.hashCode(), other.hashCode());
-	}
-
-	@Test
-	public void hashCodeTestWithNull() {
-		Item item = new Item("null", null, null);
-		Item other = new Item("null", null, null);
 		assertEquals(item.hashCode(), other.hashCode());
 	}
 
