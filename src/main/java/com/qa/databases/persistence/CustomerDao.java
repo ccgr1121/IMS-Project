@@ -51,7 +51,7 @@ public class CustomerDao implements Dao<Customer> {
 			LOGGER.info("Failed to create entry in database", e);
 
 		} finally {
-;
+
 		}
 		return customer;
 	}
