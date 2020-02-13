@@ -37,8 +37,6 @@ public class OrderDao implements Dao<Order> {
 			ArrayList<Order> orders = new ArrayList<>();
 			while (resultSet.next()) {
 				orders.add(orderFromResultSet(resultSet));
-//			DataUtil dataUtil = new DataUtil();
-//			return dataUtil.resultSet_toString(resultSet);
 			}
 		} catch (Exception e) {
 			result = "exception fail";

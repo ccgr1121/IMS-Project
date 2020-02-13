@@ -7,8 +7,8 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import com.qa.databases.persistence.Dao;
 import com.qa.databases.persistence.Customer;
+import com.qa.databases.persistence.Dao;
 
 
 @RunWith(MockitoJUnitRunner.class)
