@@ -1,7 +1,11 @@
 package com.qa.databases.domain;
 
 public class Customer {
-
+/**
+ * This is a constructor class for customers.
+ * 
+ * @Author Charlie Reddin
+ */
 	private Long id;
 	private String firstName;
 	private String surname;

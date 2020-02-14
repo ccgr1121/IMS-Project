@@ -26,7 +26,11 @@ public class OrderDao implements Dao<Order> {
 		double cost = resultSet.getDouble("cost");
 		return new Order(id, fkCustomerId, cost);
 	}
-
+	/**
+	 *  This method allows for all orders in the database to be read.
+	 *  
+	 *  @Author Charlie Reddin
+	 */
 	public List<Order> readAll() {
 		try (Connection connection = DriverManager.getConnection(Config.url, config.getUsername(),
 				config.getPassword());
@@ -43,6 +47,11 @@ public class OrderDao implements Dao<Order> {
 		return new ArrayList<>();
 	}
 
+	/**
+	 *  This method allows for orders in the database to be deleted.
+	 *  
+	 *  @Author Charlie Reddin
+	 */
 	@Override
 	public void delete(long id) {
 

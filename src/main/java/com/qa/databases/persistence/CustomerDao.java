@@ -25,6 +25,12 @@ public class CustomerDao implements Dao<Customer> {
 		return new Customer(id, firstName, surname);
 	}
 
+	/**
+	 *  This method allows for all customers in the database to be read.
+	 *  
+	 *  @Author Charlie Reddin
+	 */
+	
 	@Override
 	public List<Customer> readAll() {
 		try (Connection connection = DriverManager.getConnection(Config.url, config.getUsername(),
@@ -43,6 +49,12 @@ public class CustomerDao implements Dao<Customer> {
 		
 	}
 
+	/**
+	 *  This method allows for customers in the database to be created.
+	 *  
+	 *  @Author Charlie Reddin
+	 */
+	
 	public Customer create(Customer customer) {
 		try (Connection connection = DriverManager.getConnection(Config.url, config.getUsername(),
 				config.getPassword())) {
@@ -58,6 +70,12 @@ public class CustomerDao implements Dao<Customer> {
 		return customer;
 	}
 
+	/**
+	 *  This method allows for customers in the database to be edited.
+	 *  
+	 *  @Author Charlie Reddin
+	 */
+	
 	public Customer update(long id, Customer customer) {
 		try (Connection connection = DriverManager.getConnection(Config.url, config.getUsername(),
 				config.getPassword())) {
@@ -72,6 +90,12 @@ public class CustomerDao implements Dao<Customer> {
 		return customer;
 	}
 
+	/**
+	 *  This method allows for customers in the database to be deleted.
+	 *  
+	 *  @Author Charlie Reddin
+	 */
+	
 	@Override
 	public void delete(long id) {
 		try (Connection connection = DriverManager.getConnection(Config.url, config.getUsername(),

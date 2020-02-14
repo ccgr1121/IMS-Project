@@ -2,6 +2,8 @@ package com.qa.databases.utils;
 
 public class Config {
 	/**
+	 * The Config file contains the username and password methods, which allow for their access from the rest of the program.
+	 * 
 	 * @author Charlie
 	 */
 	private String username;

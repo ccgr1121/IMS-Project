@@ -4,7 +4,11 @@ import java.util.List;
 
 import com.qa.databases.domain.Order;
 import com.qa.databases.persistence.Dao;
-
+/**
+ * This class implements the Order Class, and allows for interaction with the DAO.
+ * @author Charlie Reddin
+ *
+ */
 public class OrderServices implements CrudServices<Order> {
 
 	Dao<Order> orderDao;

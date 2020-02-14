@@ -4,7 +4,11 @@ import java.util.List;
 
 import com.qa.databases.domain.Customer;
 import com.qa.databases.persistence.Dao;
-
+/**
+ * This class implements the Customer Class, and allows for interaction with the DAO.
+ * @author Charlie Reddin
+ *
+ */
 public class CustomerServices implements CrudServices<Customer> {
 
 	Dao<Customer> customerDao;

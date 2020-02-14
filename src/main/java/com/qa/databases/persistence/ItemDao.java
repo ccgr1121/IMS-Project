@@ -26,6 +26,12 @@ public class ItemDao implements Dao<Item> {
 		return new Item(id, name, value, stock); 
 	}
  
+	/**
+	 *  This method allows for all items in the database to be read.
+	 *  
+	 *  @Author Charlie Reddin
+	 */
+	
 	public List<Item> readAll() {
 		try (Connection connection = DriverManager.getConnection(Config.url, config.getUsername(),
 				config.getPassword());
@@ -42,6 +48,12 @@ public class ItemDao implements Dao<Item> {
 		return new ArrayList<>();
 	}
 
+	/**
+	 *  This method allows for items in the database to be created.
+	 *  
+	 *  @Author Charlie Reddin
+	 */
+	
 	public Item create(Item item) {
 		try (Connection connection = DriverManager.getConnection(Config.url, config.getUsername(),
 				config.getPassword())) {
@@ -55,6 +67,13 @@ public class ItemDao implements Dao<Item> {
 		return item;
 	}
 
+	/**
+	 *  This method allows for items in the database to be edited.
+	 *  
+	 *  @Author Charlie Reddin
+	 */
+	
+	
 	public Item update(long id, Item item) {
 		try (Connection connection = DriverManager.getConnection(Config.url, config.getUsername(),
 				config.getPassword())) {
@@ -69,6 +88,11 @@ public class ItemDao implements Dao<Item> {
  
 	}
 
+	/**
+	 *  This method allows for items in the database to be deleted.
+	 *  
+	 *  @Author Charlie Reddin
+	 */
 	@Override
 	public void delete(long id) {
 

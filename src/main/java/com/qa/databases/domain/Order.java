@@ -2,6 +2,12 @@ package com.qa.databases.domain;
 
 import java.util.ArrayList;
 
+/**
+ * This is a constructor class for orders.
+ * 
+ * @Author Charlie Reddin
+ */
+
 public class Order {
 
 	private Long orderId;

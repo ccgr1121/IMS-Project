@@ -2,6 +2,12 @@ package com.qa.databases.domain;
 
 public class Item {
 
+	/**
+	 * This is a constructor class for items.
+	 * 
+	 * @Author Charlie Reddin
+	 */
+	
 	private Long itemId;
 	private String name;
 	private Double value;
